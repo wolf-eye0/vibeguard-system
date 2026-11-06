@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+package-lock.json.bak
+
+# Compiled files
+*.bin
+*.elf
+*.o
+*.a
+*.so
+*.wasm.map
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+.env.local
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~

@@ -1,0 +1,23 @@
+{
+  "name": "pwr-supply-12v",
+  "author": "Group 8 - VibeGuard",
+  "pins": [
+    "12V_OUT",
+    "GND"
+  ],
+  "controls": [
+    {
+      "id": "power",
+      "label": "12V Main Power Switch (ASW-07D)",
+      "type": "range",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "value": 1
+    }
+  ],
+  "display": {
+    "width": 140,
+    "height": 90
+  }
+}

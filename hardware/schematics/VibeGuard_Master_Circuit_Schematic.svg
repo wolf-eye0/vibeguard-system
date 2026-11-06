@@ -1,0 +1,772 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2900 1680" width="2900" height="1680" style="background-color: #0b0f17; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#388bfd" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="espGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#131720"/>
+      <stop offset="100%" stop-color="#1c212c"/>
+    </linearGradient>
+    <linearGradient id="sensorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0b3820"/>
+      <stop offset="100%" stop-color="#085429"/>
+    </linearGradient>
+    <linearGradient id="motorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3d0a0a"/>
+      <stop offset="100%" stop-color="#5a1515"/>
+    </linearGradient>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#12161f"/>
+      <stop offset="100%" stop-color="#0e1118"/>
+    </linearGradient>
+
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#3fb950" flood-opacity="0.9"/>
+    </filter>
+    <filter id="glowBlue" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#58a6ff" flood-opacity="0.9"/>
+    </filter>
+    <filter id="glowRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#f85149" flood-opacity="0.9"/>
+    </filter>
+
+    <marker id="arrowRed" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#f85149"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3fb950"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="arrowYellow" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#d29922"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#bc8cff"/>
+    </marker>
+  </defs>
+
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#21262d" stroke-width="0.8" stroke-opacity="0.5"/>
+  </pattern>
+  <rect width="2900" height="1680" fill="url(#grid)"/>
+  <rect x="25" y="25" width="2850" height="1630" fill="none" stroke="#30363d" stroke-width="2.5" rx="12"/>
+
+  <!-- TOP TITLE BLOCK -->
+  <rect x="40" y="40" width="2820" height="105" fill="#161b22" stroke="#30363d" stroke-width="2" rx="8" filter="url(#dropShadow)"/>
+  <rect x="42" y="42" width="12" height="101" fill="#1f6feb" rx="4"/>
+  <text x="75" y="80" fill="#ffffff" font-size="28" font-weight="800" letter-spacing="1">VIBEGUARD: EDGE AI MECHANICAL VIBRATION MONITORING SYSTEM</text>
+  <text x="75" y="116" fill="#8b949e" font-size="16" font-weight="500">COMPLETE MASTER ELECTRICAL SCHEMATIC &amp; HARDWARE INTERCONNECT — REV 2.0 (PHASE 4 CERTIFIED BASELINE)</text>
+
+  <rect x="2220" y="52" width="620" height="80" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="6"/>
+  <text x="2240" y="76" fill="#58a6ff" font-size="13" font-weight="700">MCU PLATFORM: <tspan fill="#ffffff" font-weight="600">7Semi ESP32-DEVKIT-E (ESP32-WROOM-32E, CP2102, USB-C)</tspan></text>
+  <text x="2240" y="97" fill="#58a6ff" font-size="13" font-weight="700">PRIMARY SENSOR: <tspan fill="#3fb950" font-weight="600">ADXL345 SPI (CS: GPIO21, SCLK: 18, MOSI: 23, MISO: 19)</tspan></text>
+  <text x="2240" y="118" fill="#58a6ff" font-size="13" font-weight="700">SAFETY BOUNDARY: <tspan fill="#f85149" font-weight="800">100% Galvanic Domain Isolation (Zero Ground Loop Risk)</tspan></text>
+
+  <!-- LOGIC DOMAIN A -->
+  <rect x="50" y="165" width="1830" height="1145" fill="url(#boxGrad)" stroke="#388bfd" stroke-width="2" stroke-opacity="0.6" rx="10" filter="url(#dropShadow)"/>
+  <rect x="70" y="152" width="500" height="28" fill="#1f6feb" rx="4"/>
+  <text x="85" y="171" fill="#ffffff" font-size="14" font-weight="800" letter-spacing="1">LOGIC DOMAIN A: 3.3V / 5V SENSING, DSP &amp; TELEMETRY</text>
+
+  <!-- BROWNOUT NETWORK -->
+  <g transform="translate(80, 210)">
+    <rect x="0" y="0" width="520" height="300" fill="#161b22" stroke="#d29922" stroke-width="2" rx="10" filter="url(#dropShadow)"/>
+    <rect x="15" y="12" width="490" height="34" fill="#21262d" stroke="#30363d" rx="5"/>
+    <text x="260" y="35" fill="#d29922" font-size="14" font-weight="800" text-anchor="middle">MANDATORY BROWNOUT MITIGATION NETWORK</text>
+
+    <!-- C1: 100uF -->
+    <g transform="translate(30, 65)">
+      <rect x="0" y="0" width="210" height="210" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+      <text x="105" y="28" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">C1: 100 µF / 25V</text>
+      <text x="105" y="46" fill="#8b949e" font-size="11" text-anchor="middle">Low-ESR Radial Electrolytic</text>
+
+      <rect x="65" y="65" width="80" height="95" fill="#1c212c" stroke="#58a6ff" stroke-width="2" rx="6"/>
+      <rect x="125" y="65" width="20" height="95" fill="#484f58" rx="2"/>
+      <text x="135" y="115" fill="#ffffff" font-size="16" font-weight="900" text-anchor="middle">-</text>
+      <text x="80" y="85" fill="#f85149" font-size="20" font-weight="900" text-anchor="middle">+</text>
+
+      <line x1="80" y1="160" x2="80" y2="185" stroke="#f85149" stroke-width="3"/>
+      <circle cx="80" cy="185" r="4" fill="#f85149"/>
+      <text x="80" y="200" fill="#f85149" font-size="11" font-weight="700" text-anchor="middle">+3.3V</text>
+
+      <line x1="135" y1="160" x2="135" y2="185" stroke="#ffffff" stroke-width="3"/>
+      <circle cx="135" cy="185" r="4" fill="#ffffff"/>
+      <text x="135" y="200" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">GND</text>
+    </g>
+
+    <!-- C2: 100nF -->
+    <g transform="translate(275, 65)">
+      <rect x="0" y="0" width="210" height="210" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+      <text x="105" y="28" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">C2: 100 nF / 50V</text>
+      <text x="105" y="46" fill="#8b949e" font-size="11" text-anchor="middle">X7R Multilayer Ceramic (104)</text>
+
+      <circle cx="105" cy="110" r="40" fill="#b06b00" stroke="#f0883e" stroke-width="2.5"/>
+      <text x="105" y="116" fill="#ffffff" font-size="16" font-weight="900" text-anchor="middle">104</text>
+
+      <line x1="85" y1="150" x2="85" y2="185" stroke="#f85149" stroke-width="2.5"/>
+      <circle cx="85" cy="185" r="4" fill="#f85149"/>
+      <text x="85" y="200" fill="#f85149" font-size="11" font-weight="700" text-anchor="middle">+3.3V</text>
+
+      <line x1="125" y1="150" x2="125" y2="185" stroke="#ffffff" stroke-width="2.5"/>
+      <circle cx="125" cy="185" r="4" fill="#ffffff"/>
+      <text x="125" y="200" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">GND</text>
+    </g>
+  </g>
+
+  <!-- 3-STATE RGB LED -->
+  <g transform="translate(80, 545)">
+    <rect x="0" y="0" width="520" height="460" fill="#161b22" stroke="#3fb950" stroke-width="2" rx="10" filter="url(#dropShadow)"/>
+    <rect x="15" y="12" width="490" height="34" fill="#21262d" stroke="#30363d" rx="5"/>
+    <text x="260" y="35" fill="#3fb950" font-size="14" font-weight="800" text-anchor="middle">3-STATE RGB VISUAL STATUS TELEMETRY</text>
+
+    <!-- LED & Resistors -->
+    <g transform="translate(30, 60)">
+      <rect x="0" y="0" width="460" height="180" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+
+      <g transform="translate(35, 15)">
+        <path d="M 20 50 A 30 30 0 0 1 80 50 L 85 70 L 15 70 Z" fill="#21262d" stroke="#8b949e" stroke-width="2"/>
+        <line x1="10" y1="70" x2="90" y2="70" stroke="#8b949e" stroke-width="2.5"/>
+        <text x="50" y="42" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">5mm RGB</text>
+        <text x="50" y="55" fill="#8b949e" font-size="8" text-anchor="middle">Common Cathode</text>
+
+        <!-- 4 Leads with wide spacing -->
+        <line x1="20" y1="70" x2="20" y2="125" stroke="#f85149" stroke-width="2.5"/>
+        <circle cx="20" cy="125" r="3.5" fill="#f85149"/>
+        <text x="20" y="140" fill="#f85149" font-size="9" font-weight="800" text-anchor="middle">P1: Red</text>
+
+        <line x1="40" y1="70" x2="40" y2="140" stroke="#ffffff" stroke-width="3"/>
+        <circle cx="40" cy="140" r="4.5" fill="#ffffff"/>
+        <text x="40" y="155" fill="#ffffff" font-size="9" font-weight="900" text-anchor="middle">P2: GND</text>
+
+        <line x1="60" y1="70" x2="60" y2="125" stroke="#3fb950" stroke-width="2.5"/>
+        <circle cx="60" cy="125" r="3.5" fill="#3fb950"/>
+        <text x="60" y="140" fill="#3fb950" font-size="9" font-weight="800" text-anchor="middle">P3: Grn</text>
+
+        <line x1="80" y1="70" x2="80" y2="125" stroke="#58a6ff" stroke-width="2.5"/>
+        <circle cx="80" cy="125" r="3.5" fill="#58a6ff"/>
+        <text x="80" y="140" fill="#58a6ff" font-size="9" font-weight="800" text-anchor="middle">P4: Blu</text>
+      </g>
+
+      <!-- Resistors Section with Non-Overlapping Labels -->
+      <g transform="translate(180, 20)">
+        <text x="130" y="18" fill="#c9d1d9" font-size="12" font-weight="700" text-anchor="middle">CURRENT LIMITING RESISTORS</text>
+        <text x="130" y="34" fill="#8b949e" font-size="10" text-anchor="middle">330 Ω 1/4W (Orange-Orange-Brown-Gold)</text>
+
+        <!-- Green Resistor (GPIO25) -->
+        <rect x="20" y="48" width="100" height="26" fill="#161b22" stroke="#3fb950" stroke-width="1.5" rx="4"/>
+        <text x="70" y="66" fill="#3fb950" font-size="12" font-weight="800" text-anchor="middle">330 Ω (Grn)</text>
+        <circle cx="120" cy="61" r="4.5" fill="#3fb950"/>
+
+        <!-- Blue Resistor (GPIO26) -->
+        <rect x="20" y="85" width="100" height="26" fill="#161b22" stroke="#58a6ff" stroke-width="1.5" rx="4"/>
+        <text x="70" y="103" fill="#58a6ff" font-size="12" font-weight="800" text-anchor="middle">330 Ω (Blu)</text>
+        <circle cx="120" cy="98" r="4.5" fill="#58a6ff"/>
+
+        <!-- Red Resistor (GPIO27) -->
+        <rect x="20" y="122" width="100" height="26" fill="#161b22" stroke="#f85149" stroke-width="1.5" rx="4"/>
+        <text x="70" y="140" fill="#f85149" font-size="12" font-weight="800" text-anchor="middle">330 Ω (Red)</text>
+        <circle cx="120" cy="135" r="4.5" fill="#f85149"/>
+      </g>
+    </g>
+
+    <!-- State Truth Table -->
+    <g transform="translate(30, 255)">
+      <rect x="0" y="0" width="460" height="185" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+      <text x="230" y="25" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">FIRMWARE TELEMETRY TRUTH TABLE &amp; THRESHOLDS</text>
+
+      <circle cx="35" cy="55" r="9" fill="#3fb950" filter="url(#glowGreen)"/>
+      <text x="55" y="52" fill="#3fb950" font-size="12" font-weight="800">GREEN SOLID (NORMAL OPERATIONAL ZONE)</text>
+      <text x="55" y="68" fill="#c9d1d9" font-size="11">Vector RMS Acceleration &lt; 0.45g • Baseline healthy operation</text>
+
+      <circle cx="35" cy="100" r="9" fill="#58a6ff" filter="url(#glowBlue)"/>
+      <text x="55" y="97" fill="#58a6ff" font-size="12" font-weight="800">BLUE SOLID / PULSE (SYSTEM INITIALIZING / CALIBRATING)</text>
+      <text x="55" y="113" fill="#c9d1d9" font-size="11">Circular buffer filling • DC offset calibration window</text>
+
+      <circle cx="35" cy="145" r="9" fill="#f85149" filter="url(#glowRed)"/>
+      <text x="55" y="142" fill="#f85149" font-size="12" font-weight="800">RED BLINK / SOLID (ABNORMAL / CRITICAL FAULT)</text>
+      <text x="55" y="158" fill="#c9d1d9" font-size="11">Vector RMS &gt; 0.45g persistent across K=3 of M=5 windows</text>
+    </g>
+  </g>
+
+  <!-- ESP32 BLOCK -->
+  <g transform="translate(670, 210)">
+    <rect x="0" y="0" width="450" height="790" fill="url(#espGrad)" stroke="#58a6ff" stroke-width="3" rx="16" filter="url(#dropShadow)"/>
+
+    <rect x="25" y="20" width="400" height="65" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+    <text x="225" y="50" fill="#ffffff" font-size="20" font-weight="800" text-anchor="middle">7Semi ESP32-DEVKIT-E</text>
+    <text x="225" y="71" fill="#8b949e" font-size="12" text-anchor="middle">ESP32-WROOM-32E • CP2102 USB Bridge • 38-Pin DevKitC V4</text>
+
+    <rect x="115" y="105" width="220" height="190" fill="#1f242c" stroke="#6e7681" stroke-width="1.5" rx="6"/>
+    <rect x="135" y="85" width="180" height="20" fill="#1b4725" stroke="#2ea043" stroke-width="1.5" rx="3"/>
+    <text x="225" y="100" fill="#ffffff" font-size="11" font-weight="800" text-anchor="middle">PCB ANTENNA</text>
+    <text x="225" y="200" fill="#ffffff" font-size="18" font-weight="900" text-anchor="middle">ESP32-WROOM-32E</text>
+    <text x="225" y="222" fill="#8b949e" font-size="11" text-anchor="middle">Dual-Core Xtensa LX6 @ 240 MHz</text>
+    <text x="225" y="238" fill="#8b949e" font-size="11" text-anchor="middle">520 KB SRAM • 4 MB SPI Flash</text>
+
+    <rect x="115" y="470" width="95" height="60" fill="#161b22" stroke="#30363d" rx="4"/>
+    <text x="162" y="500" fill="#c9d1d9" font-size="12" font-weight="700" text-anchor="middle">CP2102</text>
+    <text x="162" y="518" fill="#8b949e" font-size="10" text-anchor="middle">USB-UART</text>
+
+    <rect x="240" y="470" width="95" height="60" fill="#161b22" stroke="#30363d" rx="4"/>
+    <text x="287" y="500" fill="#c9d1d9" font-size="12" font-weight="700" text-anchor="middle">AMS1117</text>
+    <text x="287" y="518" fill="#8b949e" font-size="10" text-anchor="middle">3.3V LDO</text>
+
+    <rect x="165" y="585" width="120" height="42" fill="#30363d" stroke="#ffffff" stroke-width="1.5" rx="5"/>
+    <text x="225" y="612" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">USB-C PORT</text>
+    <text x="225" y="650" fill="#58a6ff" font-size="12" font-weight="700" text-anchor="middle">▼ Host PC Telemetry (921,600 baud) &amp; 5V Power</text>
+
+    <text x="45" y="110" fill="#58a6ff" font-size="12" font-weight="800">HEADER J1 (LEFT)</text>
+    <text x="405" y="110" fill="#58a6ff" font-size="12" font-weight="800" text-anchor="end">HEADER J3 (RIGHT)</text>
+
+        <rect x="25" y="130" width="48" height="24" fill="#f85149" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="49" y="146" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">3V3</text>
+        <circle cx="8" cy="142" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="146" fill="#ffffff" font-size="9" font-weight="bold">3.3V OUT</text>
+        
+        <rect x="25" y="160" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="176" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">EN</text>
+        <circle cx="8" cy="172" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="176" fill="#8b949e" font-size="9" font-weight="normal">RESET</text>
+        
+        <rect x="25" y="190" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="206" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">VP</text>
+        <circle cx="8" cy="202" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="206" fill="#8b949e" font-size="9" font-weight="normal">GPIO36</text>
+        
+        <rect x="25" y="220" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="236" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">VN</text>
+        <circle cx="8" cy="232" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="236" fill="#8b949e" font-size="9" font-weight="normal">GPIO39</text>
+        
+        <rect x="25" y="250" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="266" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D34</text>
+        <circle cx="8" cy="262" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="266" fill="#8b949e" font-size="9" font-weight="normal">GPIO34</text>
+        
+        <rect x="25" y="280" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="296" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D35</text>
+        <circle cx="8" cy="292" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="296" fill="#8b949e" font-size="9" font-weight="normal">GPIO35</text>
+        
+        <rect x="25" y="310" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="326" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D32</text>
+        <circle cx="8" cy="322" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="326" fill="#8b949e" font-size="9" font-weight="normal">GPIO32</text>
+        
+        <rect x="25" y="340" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="356" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D33</text>
+        <circle cx="8" cy="352" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="356" fill="#8b949e" font-size="9" font-weight="normal">GPIO33</text>
+        
+        <rect x="25" y="370" width="48" height="24" fill="#3fb950" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="49" y="386" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D25</text>
+        <circle cx="8" cy="382" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="386" fill="#ffffff" font-size="9" font-weight="bold">GPIO25 (LED-G)</text>
+        
+        <rect x="25" y="400" width="48" height="24" fill="#58a6ff" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="49" y="416" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D26</text>
+        <circle cx="8" cy="412" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="416" fill="#ffffff" font-size="9" font-weight="bold">GPIO26 (LED-B)</text>
+        
+        <rect x="25" y="430" width="48" height="24" fill="#f85149" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="49" y="446" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D27</text>
+        <circle cx="8" cy="442" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="446" fill="#ffffff" font-size="9" font-weight="bold">GPIO27 (LED-R)</text>
+        
+        <rect x="25" y="460" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="476" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D14</text>
+        <circle cx="8" cy="472" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="476" fill="#8b949e" font-size="9" font-weight="normal">GPIO14</text>
+        
+        <rect x="25" y="490" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="506" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D12</text>
+        <circle cx="8" cy="502" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="506" fill="#8b949e" font-size="9" font-weight="normal">GPIO12</text>
+        
+        <rect x="25" y="520" width="48" height="24" fill="#000000" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="49" y="536" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">GND</text>
+        <circle cx="8" cy="532" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="536" fill="#ffffff" font-size="9" font-weight="bold">GROUND</text>
+        
+        <rect x="25" y="550" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="566" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D13</text>
+        <circle cx="8" cy="562" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="566" fill="#8b949e" font-size="9" font-weight="normal">GPIO13</text>
+        
+        <rect x="25" y="580" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="596" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D9</text>
+        <circle cx="8" cy="592" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="596" fill="#8b949e" font-size="9" font-weight="normal">GPIO9</text>
+        
+        <rect x="25" y="610" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="626" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D10</text>
+        <circle cx="8" cy="622" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="626" fill="#8b949e" font-size="9" font-weight="normal">GPIO10</text>
+        
+        <rect x="25" y="640" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="656" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D11</text>
+        <circle cx="8" cy="652" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="656" fill="#8b949e" font-size="9" font-weight="normal">GPIO11</text>
+        
+        <rect x="25" y="670" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="49" y="686" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">5V</text>
+        <circle cx="8" cy="682" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="80" y="686" fill="#8b949e" font-size="9" font-weight="normal">VBUS IN</text>
+        
+        <rect x="377" y="130" width="48" height="24" fill="#000000" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="401" y="146" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">GND</text>
+        <circle cx="442" cy="142" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="146" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="end">GROUND</text>
+        
+        <rect x="377" y="160" width="48" height="24" fill="#388bfd" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="401" y="176" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D23</text>
+        <circle cx="442" cy="172" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="176" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="end">GPIO23 (MOSI)</text>
+        
+        <rect x="377" y="190" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="206" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D22</text>
+        <circle cx="442" cy="202" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="206" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO22</text>
+        
+        <rect x="377" y="220" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="236" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">TX0</text>
+        <circle cx="442" cy="232" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="236" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO1</text>
+        
+        <rect x="377" y="250" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="266" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">RX0</text>
+        <circle cx="442" cy="262" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="266" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO3</text>
+        
+        <rect x="377" y="280" width="48" height="24" fill="#d29922" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="401" y="296" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D21</text>
+        <circle cx="442" cy="292" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="296" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="end">GPIO21 (CS)</text>
+        
+        <rect x="377" y="310" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="326" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">NC</text>
+        <circle cx="442" cy="322" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="326" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">NOT CONNECT</text>
+        
+        <rect x="377" y="340" width="48" height="24" fill="#3fb950" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="401" y="356" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D19</text>
+        <circle cx="442" cy="352" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="356" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="end">GPIO19 (MISO)</text>
+        
+        <rect x="377" y="370" width="48" height="24" fill="#bc8cff" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="401" y="386" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D18</text>
+        <circle cx="442" cy="382" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="386" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="end">GPIO18 (SCLK)</text>
+        
+        <rect x="377" y="400" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="416" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D5</text>
+        <circle cx="442" cy="412" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="416" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO5</text>
+        
+        <rect x="377" y="430" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="446" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D17</text>
+        <circle cx="442" cy="442" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="446" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO17</text>
+        
+        <rect x="377" y="460" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="476" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D16</text>
+        <circle cx="442" cy="472" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="476" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO16</text>
+        
+        <rect x="377" y="490" width="48" height="24" fill="#f0883e" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="401" y="506" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">D4</text>
+        <circle cx="442" cy="502" r="4" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="506" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="end">GPIO4 (INT1)</text>
+        
+        <rect x="377" y="520" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="536" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D0</text>
+        <circle cx="442" cy="532" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="536" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO0</text>
+        
+        <rect x="377" y="550" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="566" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D2</text>
+        <circle cx="442" cy="562" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="566" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO2</text>
+        
+        <rect x="377" y="580" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="596" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D15</text>
+        <circle cx="442" cy="592" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="596" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO15</text>
+        
+        <rect x="377" y="610" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="626" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D8</text>
+        <circle cx="442" cy="622" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="626" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO8</text>
+        
+        <rect x="377" y="640" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="656" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D7</text>
+        <circle cx="442" cy="652" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="656" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO7</text>
+        
+        <rect x="377" y="670" width="48" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="401" y="686" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">D6</text>
+        <circle cx="442" cy="682" r="4" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="370" y="686" fill="#8b949e" font-size="9" font-weight="normal" text-anchor="end">GPIO6</text>
+        
+  </g> <!-- End ESP32 -->
+
+  <!-- ==================== ADXL345 SENSOR BLOCK (CLEAN SINGLE-COLUMN PINOUT) ==================== -->
+  <g transform="translate(1350, 210)">
+    <rect x="0" y="0" width="520" height="520" fill="url(#sensorGrad)" stroke="#3fb950" stroke-width="2.5" rx="14" filter="url(#dropShadow)"/>
+
+    <rect x="25" y="20" width="470" height="50" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+    <text x="260" y="45" fill="#ffffff" font-size="18" font-weight="800" text-anchor="middle">ADXL345 3-AXIS ACCELEROMETER</text>
+    <text x="260" y="62" fill="#75b798" font-size="11" text-anchor="middle">Robocraze Breakout (#TJFKQXJUQ) • 4-Wire SPI Mode 3/0</text>
+
+    <!-- IC Chip Graphic & Axes -->
+    <rect x="200" y="90" width="120" height="95" fill="#161b22" stroke="#30363d" stroke-width="2" rx="6"/>
+    <text x="260" y="135" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">ADXL345</text>
+    <text x="260" y="152" fill="#8b949e" font-size="10" text-anchor="middle">LGA-14 MEMS</text>
+    <text x="260" y="168" fill="#3fb950" font-size="10" font-weight="700" text-anchor="middle">800 Hz ODR • ±16g</text>
+
+    <!-- Coordinate Frame -->
+    <g transform="translate(380, 135)">
+      <line x1="0" y1="0" x2="45" y2="0" stroke="#f85149" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+      <text x="50" y="4" fill="#f85149" font-size="10" font-weight="800">+X (Radial)</text>
+      <line x1="0" y1="0" x2="0" y2="-45" stroke="#3fb950" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+      <text x="0" y="-50" fill="#3fb950" font-size="10" font-weight="800" text-anchor="middle">+Y (Axial)</text>
+      <line x1="0" y1="0" x2="-25" y2="25" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrowBlue)"/>
+      <text x="-30" y="35" fill="#58a6ff" font-size="9" font-weight="700">+Z (Tangential)</text>
+    </g>
+
+    <!-- Header Title -->
+    <text x="25" y="215" fill="#3fb950" font-size="13" font-weight="800">8-PIN 0.1" BREADBOARD HEADER (SINGLE CLEAN COLUMN — ZERO CROSSOVERS)</text>
+
+        <rect x="25" y="235" width="50" height="24" fill="#f85149" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="50" y="251" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">VCC</text>
+        <circle cx="17" cy="247" r="4.5" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="251" fill="#ffffff" font-size="11" font-weight="bold">+3.3V Regulated DC Supply</text>
+        
+        <rect x="25" y="270" width="50" height="24" fill="#000000" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="50" y="286" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">GND</text>
+        <circle cx="17" cy="282" r="4.5" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="286" fill="#ffffff" font-size="11" font-weight="bold">Common Ground (0V Return)</text>
+        
+        <rect x="25" y="305" width="50" height="24" fill="#d29922" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="50" y="321" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">CS</text>
+        <circle cx="17" cy="317" r="4.5" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="321" fill="#ffffff" font-size="11" font-weight="bold">SPI Chip Select (Active LOW)</text>
+        
+        <rect x="25" y="340" width="50" height="24" fill="#bc8cff" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="50" y="356" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">SCL</text>
+        <circle cx="17" cy="352" r="4.5" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="356" fill="#ffffff" font-size="11" font-weight="bold">SPI Serial Clock (2.5 MHz)</text>
+        
+        <rect x="25" y="375" width="50" height="24" fill="#388bfd" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="50" y="391" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">SDA</text>
+        <circle cx="17" cy="387" r="4.5" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="391" fill="#ffffff" font-size="11" font-weight="bold">SPI MOSI / Serial Data In</text>
+        
+        <rect x="25" y="410" width="50" height="24" fill="#3fb950" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="50" y="426" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">SDO</text>
+        <circle cx="17" cy="422" r="4.5" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="426" fill="#ffffff" font-size="11" font-weight="bold">SPI MISO / Serial Data Out</text>
+        
+        <rect x="25" y="445" width="50" height="24" fill="#f0883e" stroke="#ffffff" stroke-width="1.5" rx="3"/>
+        <text x="50" y="461" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">INT1</text>
+        <circle cx="17" cy="457" r="4.5" fill="#ffffff" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="461" fill="#ffffff" font-size="11" font-weight="bold">Data Ready FIFO Watermark Interrupt</text>
+        
+        <rect x="25" y="480" width="50" height="24" fill="#21262d" stroke="#30363d" stroke-width="1.5" rx="3"/>
+        <text x="50" y="496" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="middle">INT2</text>
+        <circle cx="17" cy="492" r="4.5" fill="#30363d" stroke="#0d1117" stroke-width="1"/>
+        <text x="85" y="496" fill="#8b949e" font-size="11" font-weight="normal">Auxiliary Interrupt 2 (NC)</text>
+        
+  </g> <!-- End ADXL345 Group -->
+
+  <!-- ==================== LOGIC DOMAIN INTERCONNECT WIRES ==================== -->
+  <!-- 3.3V Power Line -->
+  <path d="M 678 351 L 610 351 L 610 185 L 1340 185 L 1340 457 L 1367 457" fill="none" stroke="#f85149" stroke-width="3.5" marker-end="url(#arrowRed)"/>
+  <path d="M 610 351 L 610 395 L 395 395" fill="none" stroke="#f85149" stroke-width="3"/>
+  <circle cx="610" cy="351" r="5" fill="#f85149"/>
+  <text x="960" y="177" fill="#f85149" font-size="13" font-weight="800">3.3V REGULATED DC POWER BUS (AMS1117-3.3)</text>
+
+  <!-- Digital GND Line -->
+  <path d="M 678 741 L 630 741 L 630 410 L 410 410" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="5,3"/>
+  <path d="M 630 741 L 630 690 L 115 690" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="5,3"/>
+  <circle cx="630" cy="741" r="5" fill="#ffffff"/>
+
+  <!-- ADXL345 GND to ESP32 J3-1 GND (340 -> 492) -->
+  <path d="M 1112 351 L 1230 351 L 1230 492 L 1367 492" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="5,3"/>
+  <circle cx="1112" 351 r="5" fill="#ffffff"/>
+  <text x="1235" y="343" fill="#ffffff" font-size="11" font-weight="700">GND (0V)</text>
+
+  <!-- SPI CS: J3-6 (GPIO21) -> ADXL345 CS (Pin 3: Y=527) -->
+  <path d="M 1112 501 L 1250 501 L 1250 527 L 1367 527" fill="none" stroke="#d29922" stroke-width="3" marker-end="url(#arrowYellow)"/>
+  <text x="1160" y="495" fill="#d29922" font-size="11" font-weight="800">CS (GPIO21)</text>
+
+  <!-- SPI SCLK: J3-9 (GPIO18) -> ADXL345 SCL (Pin 4: Y=562) -->
+  <path d="M 1112 591 L 1270 591 L 1270 562 L 1367 562" fill="none" stroke="#bc8cff" stroke-width="3" marker-end="url(#arrowPurple)"/>
+  <text x="1160" y="585" fill="#bc8cff" font-size="11" font-weight="800">SCLK (GPIO18)</text>
+
+  <!-- SPI MOSI: J3-2 (GPIO23) -> ADXL345 SDA (Pin 5: Y=597) -->
+  <path d="M 1112 381 L 1290 381 L 1290 597 L 1367 597" fill="none" stroke="#388bfd" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="1160" y="375" fill="#388bfd" font-size="11" font-weight="800">MOSI (GPIO23)</text>
+
+  <!-- SPI MISO: J3-8 (GPIO19) -> ADXL345 SDO (Pin 6: Y=632) -->
+  <path d="M 1112 561 L 1310 561 L 1310 632 L 1367 632" fill="none" stroke="#3fb950" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="1160" y="555" fill="#3fb950" font-size="11" font-weight="800">MISO (GPIO19)</text>
+
+  <!-- INT1: J3-13 (GPIO4) -> ADXL345 INT1 (Pin 7: Y=667) -->
+  <path d="M 1112 711 L 1330 711 L 1330 667 L 1367 667" fill="none" stroke="#f0883e" stroke-width="2.5" stroke-dasharray="6,4"/>
+  <text x="1160" y="705" fill="#f0883e" font-size="11" font-weight="800">INT1 (GPIO4)</text>
+
+  <!-- RGB LED WIRING FROM J1 (Direct clean connections to Resistor Right Terminals) -->
+  <!-- GPIO25 (Green) -> Resistor Right Terminal (X=330, Y=626) -->
+  <path d="M 678 591 L 580 591 L 580 626 L 330 626" fill="none" stroke="#3fb950" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <!-- GPIO26 (Blue) -> Resistor Right Terminal (X=330, Y=663) -->
+  <path d="M 678 621 L 560 621 L 560 663 L 330 663" fill="none" stroke="#58a6ff" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <!-- GPIO27 (Red) -> Resistor Right Terminal (X=330, Y=700) -->
+  <path d="M 678 651 L 540 651 L 540 700 L 330 700" fill="none" stroke="#f85149" stroke-width="3" marker-end="url(#arrowRed)"/>
+
+  <!-- Left of Resistors to LED Anode Pins -->
+  <path d="M 230 626 L 195 626 L 195 685 L 175 685" fill="none" stroke="#3fb950" stroke-width="2.5"/>
+  <path d="M 230 663 L 205 663 L 205 685 L 195 685" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+  <path d="M 230 700 L 185 700 L 185 685 L 135 685" fill="none" stroke="#f85149" stroke-width="2.5"/>
+
+  <!-- ISOLATION BARRIER -->
+  <line x1="1910" y1="165" x2="1910" y2="660" stroke="#f85149" stroke-width="4" stroke-dasharray="14,10"/>
+  <line x1="1910" y1="780" x2="1910" y2="1310" stroke="#f85149" stroke-width="4" stroke-dasharray="14,10"/>
+
+  <rect x="1780" y="665" width="260" height="105" fill="#da3633" stroke="#ffffff" stroke-width="2.5" rx="8" filter="url(#dropShadow)"/>
+  <text x="1910" y="695" fill="#ffffff" font-size="14" font-weight="900" text-anchor="middle">GALVANIC ISOLATION</text>
+  <text x="1910" y="718" fill="#ffffff" font-size="14" font-weight="900" text-anchor="middle">SAFETY BARRIER</text>
+  <text x="1910" y="742" fill="#0d1117" font-size="11" font-weight="800" text-anchor="middle">STRICT ZERO-GROUND COUPLING</text>
+  <text x="1910" y="756" fill="#0d1117" font-size="9" font-weight="700" text-anchor="middle">No Electrical Return Wire Permitted</text>
+
+  <!-- POWER DOMAIN B (12V MOTOR DRIVE) -->
+  <rect x="1935" y="165" width="915" height="1145" fill="url(#boxGrad)" stroke="#f85149" stroke-width="2" stroke-opacity="0.6" rx="10" filter="url(#dropShadow)"/>
+  <rect x="1955" y="152" width="460" height="28" fill="#da3633" rx="4"/>
+  <text x="1970" y="171" fill="#ffffff" font-size="14" font-weight="800" letter-spacing="1">POWER DOMAIN B: 12V MOTOR DRIVE (ISOLATED)</text>
+
+  <!-- 12V DC Supply -->
+  <g transform="translate(1970, 210)">
+    <rect x="0" y="0" width="370" height="180" fill="#0d1117" stroke="#6e7681" stroke-width="1.5" rx="8"/>
+    <text x="185" y="32" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">12V DC POWER SUPPLY</text>
+    <text x="185" y="50" fill="#8b949e" font-size="10" text-anchor="middle">Wall Adapter 230V AC → 12V DC, 2.0A Regulated</text>
+
+    <circle cx="80" cy="115" r="22" fill="#21262d" stroke="#8b949e" stroke-width="2"/>
+    <circle cx="80" cy="115" r="7" fill="#d29922"/>
+    <text x="160" y="105" fill="#d29922" font-size="12" font-weight="800">5.5 × 2.1 mm DC JACK</text>
+    <text x="160" y="125" fill="#8b949e" font-size="10">Screw Terminal Block</text>
+    <text x="160" y="142" fill="#3fb950" font-size="10" font-weight="700">Center Positive (+12V)</text>
+  </g>
+
+  <!-- KCD1 Switch -->
+  <g transform="translate(2390, 210)">
+    <rect x="0" y="0" width="430" height="180" fill="#0d1117" stroke="#6e7681" stroke-width="1.5" rx="8"/>
+    <text x="215" y="32" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">KCD1 ROCKER SWITCH</text>
+    <text x="215" y="50" fill="#8b949e" font-size="10" text-anchor="middle">12V–250V AC/DC • Inline Master Power Cut</text>
+
+    <rect x="150" y="75" width="130" height="75" fill="#21262d" stroke="#da3633" stroke-width="2" rx="5"/>
+    <path d="M 175 135 L 215 90 L 255 135 Z" fill="#da3633"/>
+    <text x="215" y="120" fill="#ffffff" font-size="18" font-weight="900" text-anchor="middle">I / O</text>
+  </g>
+
+  <!-- Fuse Holder -->
+  <g transform="translate(1970, 420)">
+    <rect x="0" y="0" width="850" height="140" fill="#0d1117" stroke="#6e7681" stroke-width="1.5" rx="8"/>
+    <text x="425" y="30" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">5×20 mm INLINE FUSE HOLDER &amp; CARTRIDGE FUSE</text>
+    <text x="425" y="48" fill="#8b949e" font-size="10" text-anchor="middle">1.0 A, 250V Time-Delay Glass Cartridge (Robu Order 2) • Overcurrent &amp; Short-Circuit Protection</text>
+
+    <g transform="translate(210, 70)">
+      <rect x="0" y="0" width="40" height="40" fill="#21262d" stroke="#8b949e" stroke-width="2" rx="4"/>
+      <rect x="390" y="0" width="40" height="40" fill="#21262d" stroke="#8b949e" stroke-width="2" rx="4"/>
+      <rect x="40" y="5" width="350" height="30" fill="#58a6ff" fill-opacity="0.15" stroke="#ffffff" stroke-width="1.5"/>
+      <line x1="40" y1="20" x2="390" y2="20" stroke="#d29922" stroke-width="3"/>
+      <text x="215" y="25" fill="#ffffff" font-size="12" font-weight="800" text-anchor="middle">1.0A 250V TIME-DELAY FUSE</text>
+    </g>
+  </g>
+
+  <!-- 1N4007 Diode Block -->
+  <g transform="translate(1970, 590)">
+    <rect x="0" y="0" width="850" height="175" fill="#0d1117" stroke="#d29922" stroke-width="2" rx="8"/>
+    <text x="425" y="28" fill="#d29922" font-size="14" font-weight="800" text-anchor="middle">1N4007 FLYBACK / BACK-EMF CLAMP DIODE</text>
+    <text x="425" y="46" fill="#8b949e" font-size="10" text-anchor="middle">1A, 1000V Peak Reverse • Connected Anti-Parallel Across Motor Terminals</text>
+
+    <g transform="translate(300, 70)">
+      <line x1="0" y1="35" x2="100" y2="35" stroke="#0969da" stroke-width="4"/>
+      <polygon points="100,10 100,60 160,35" fill="#21262d" stroke="#f85149" stroke-width="3"/>
+      <line x1="160" y1="10" x2="160" y2="60" stroke="#ffffff" stroke-width="6"/>
+      <line x1="160" y1="35" x2="260" y2="35" stroke="#da3633" stroke-width="4"/>
+
+      <text x="50" y="25" fill="#0969da" font-size="11" font-weight="800" text-anchor="middle">Anode (12V GND)</text>
+      <text x="210" y="25" fill="#da3633" font-size="11" font-weight="800" text-anchor="middle">Cathode (+12V)</text>
+      <text x="210" y="40" fill="#8b949e" font-size="9" text-anchor="middle">(Silver Band)</text>
+      <text x="130" y="80" fill="#3fb950" font-size="11" font-weight="700" text-anchor="middle">Clamps Inductive Turn-off Spikes: -80V → -0.7V</text>
+    </g>
+  </g>
+
+  <!-- N20 Motor Block -->
+  <g transform="translate(1970, 790)">
+    <rect x="0" y="0" width="850" height="230" fill="url(#motorGrad)" stroke="#f85149" stroke-width="2.5" rx="8"/>
+    <text x="425" y="30" fill="#ffffff" font-size="16" font-weight="800" text-anchor="middle">N20 MICRO METAL GEAR DC MOTOR (12V 600 RPM)</text>
+    <text x="425" y="48" fill="#c9d1d9" font-size="10" text-anchor="middle">Robocraze Motor • D-Shaft • Clamped 3D Eccentric Cam Arm (FAB-01)</text>
+
+    <g transform="translate(80, 80)">
+      <!-- Cam Arm FAB-01 -->
+      <path d="M 0 45 L -45 20 A 30 30 0 0 0 -45 110 L 0 85 Z" fill="#238636" stroke="#2ea043" stroke-width="2"/>
+      <circle cx="-45" cy="65" r="18" fill="#d29922" stroke="#ffffff" stroke-width="2"/>
+      <text x="-45" y="70" fill="#000000" font-size="11" font-weight="900" text-anchor="middle">M3</text>
+      <text x="-45" y="105" fill="#3fb950" font-size="10" font-weight="800" text-anchor="middle">FAB-01 Arm</text>
+      <text x="-45" y="118" fill="#8b949e" font-size="8.5" text-anchor="middle">Eccentric Mass</text>
+
+      <!-- Shaft -->
+      <rect x="0" y="58" width="40" height="14" fill="#c9d1d9" stroke="#ffffff" stroke-width="1.5"/>
+      <text x="20" y="50" fill="#ffffff" font-size="9" font-weight="700" text-anchor="middle">3mm D-Shaft</text>
+
+      <!-- Gearbox -->
+      <rect x="40" y="25" width="120" height="80" fill="#21262d" stroke="#8b949e" stroke-width="2" rx="4"/>
+      <text x="100" y="65" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">GEARBOX</text>
+      <text x="100" y="82" fill="#8b949e" font-size="10" text-anchor="middle">All-Metal</text>
+
+      <!-- Motor Body -->
+      <rect x="160" y="32" width="160" height="66" fill="#161b22" stroke="#6e7681" stroke-width="2" rx="5"/>
+      <text x="240" y="65" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">DC MOTOR</text>
+      <text x="240" y="82" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">12V DC</text>
+
+      <!-- Motor Solder Lugs -->
+      <rect x="320" y="42" width="25" height="15" fill="#d29922" stroke="#ffffff"/>
+      <text x="355" y="54" fill="#da3633" font-size="11" font-weight="800">(+) Terminal</text>
+
+      <rect x="320" y="73" width="25" height="15" fill="#d29922" stroke="#ffffff"/>
+      <text x="355" y="85" fill="#0969da" font-size="11" font-weight="800">(-) Terminal</text>
+
+      <!-- Vibration Path Box -->
+      <g transform="translate(480, 20)">
+        <rect x="0" y="0" width="260" height="90" fill="#0d1117" stroke="#388bfd" stroke-width="1.5" rx="6"/>
+        <text x="130" y="26" fill="#58a6ff" font-size="11" font-weight="800" text-anchor="middle">MECHANICAL VIBRATION PATH</text>
+        <text x="130" y="44" fill="#8b949e" font-size="9" text-anchor="middle">Rigid 10mm Laminated Acrylic Slab</text>
+        <text x="130" y="58" fill="#8b949e" font-size="9" text-anchor="middle">(2× 5mm Cast Acrylite Sheets)</text>
+        <rect x="30" y="66" width="200" height="16" fill="#1f6feb" rx="3"/>
+        <text x="130" y="78" fill="#ffffff" font-size="9" font-weight="700" text-anchor="middle">10.0 Hz Sinusoidal Excitation ◄ ◄</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 12V Power Wiring Traces -->
+  <path d="M 2340 300 L 2390 300" fill="none" stroke="#da3633" stroke-width="4"/>
+  <path d="M 2605 300 L 2650 300 L 2650 490 L 2420 490" fill="none" stroke="#da3633" stroke-width="4"/>
+  <path d="M 2180 490 L 1950 490 L 1950 695 L 2270 695" fill="none" stroke="#da3633" stroke-width="4"/>
+  <path d="M 2270 695 L 2430 695 L 2430 902 L 2375 902" fill="none" stroke="#da3633" stroke-width="4"/>
+
+  <!-- 12V Ground Return -->
+  <path d="M 2050 325 L 2000 325 L 2000 695 L 2270 695" fill="none" stroke="#0969da" stroke-width="4" stroke-dasharray="6,3"/>
+  <path d="M 2270 695 L 2270 933 L 2375 933" fill="none" stroke="#0969da" stroke-width="4" stroke-dasharray="6,3"/>
+
+  <!-- Ground Isolation Stamp -->
+  <g transform="translate(2000, 1050)">
+    <rect x="0" y="0" width="790" height="70" fill="#161b22" stroke="#f85149" stroke-width="2" rx="8"/>
+    <text x="395" y="30" fill="#f85149" font-size="14" font-weight="900" text-anchor="middle">NO COMMON GROUND WITH ESP32 / USB</text>
+    <text x="395" y="50" fill="#c9d1d9" font-size="11" text-anchor="middle">Pure Vibration Coupling Through Solid Acrylic • Prevents Ground Loops, Inductive Spikes &amp; Host PC Port Damage</text>
+  </g>
+
+  <!-- ==================== HARNESS PIN INTERCONNECT MATRIX TABLE ==================== -->
+  <g transform="translate(50, 1335)">
+    <rect x="0" y="0" width="2800" height="315" fill="#161b22" stroke="#30363d" stroke-width="2" rx="10" filter="url(#dropShadow)"/>
+    <rect x="15" y="15" width="2770" height="34" fill="#21262d" rx="4"/>
+    <text x="35" y="38" fill="#58a6ff" font-size="14" font-weight="800">MASTER SYSTEM INTERCONNECT &amp; HARNESS MATRIX (VERIFIED FROZEN BASELINE)</text>
+
+    <!-- Column Headers -->
+    <text x="35" y="74" fill="#8b949e" font-size="12" font-weight="800">SUBSYSTEM</text>
+    <text x="210" y="74" fill="#8b949e" font-size="12" font-weight="800">SIGNAL NAME</text>
+    <text x="480" y="74" fill="#8b949e" font-size="12" font-weight="800">ESP32 PIN / GPIO</text>
+    <text x="780" y="74" fill="#8b949e" font-size="12" font-weight="800">TARGET COMPONENT</text>
+    <text x="1100" y="74" fill="#8b949e" font-size="12" font-weight="800">SIGNAL TYPE &amp; PARAMETERS</text>
+    <text x="1720" y="74" fill="#8b949e" font-size="12" font-weight="800">PHYSICAL WIRE / TRACE SPEC</text>
+    <text x="2380" y="74" fill="#8b949e" font-size="12" font-weight="800">STATUS / AUDIT NOTE</text>
+    <line x1="20" y1="84" x2="2780" y2="84" stroke="#30363d" stroke-width="1.5"/>
+
+        <rect x="20" y="90" width="2760" height="21" fill="#131720"/>
+        <text x="35" y="104" fill="#58a6ff" font-size="11" font-weight="700">ADXL345 SPI Bus</text>
+        <text x="210" y="104" fill="#ffffff" font-size="11" font-weight="600">SPI Chip Select</text>
+        <text x="480" y="104" fill="#d29922" font-size="11" font-weight="700">GPIO 21 (Header J3-6)</text>
+        <text x="780" y="104" fill="#3fb950" font-size="11">ADXL345 CS (Pin 3)</text>
+        <text x="1100" y="104" fill="#8b949e" font-size="11">Digital Output (Active LOW)</text>
+        <text x="1720" y="104" fill="#8b949e" font-size="11">Yellow DuPont 26AWG, < 150mm</text>
+        <text x="2380" y="104" fill="#3fb950" font-size="11" font-weight="700">Verified (Remapped from strapping GPIO5)</text>
+        
+        <rect x="20" y="112" width="2760" height="21" fill="#161b22"/>
+        <text x="35" y="126" fill="#58a6ff" font-size="11" font-weight="700">ADXL345 SPI Bus</text>
+        <text x="210" y="126" fill="#ffffff" font-size="11" font-weight="600">SPI Serial Clock</text>
+        <text x="480" y="126" fill="#d29922" font-size="11" font-weight="700">GPIO 18 (Header J3-9)</text>
+        <text x="780" y="126" fill="#3fb950" font-size="11">ADXL345 SCL (Pin 8)</text>
+        <text x="1100" y="126" fill="#8b949e" font-size="11">Clock Output (2.5 MHz Burst)</text>
+        <text x="1720" y="126" fill="#8b949e" font-size="11">Purple DuPont 26AWG, < 150mm</text>
+        <text x="2380" y="126" fill="#3fb950" font-size="11" font-weight="700">Verified (Clean clock edge, no overshoot)</text>
+        
+        <rect x="20" y="134" width="2760" height="21" fill="#131720"/>
+        <text x="35" y="148" fill="#58a6ff" font-size="11" font-weight="700">ADXL345 SPI Bus</text>
+        <text x="210" y="148" fill="#ffffff" font-size="11" font-weight="600">SPI Master In (SDO)</text>
+        <text x="480" y="148" fill="#d29922" font-size="11" font-weight="700">GPIO 19 (Header J3-8)</text>
+        <text x="780" y="148" fill="#3fb950" font-size="11">ADXL345 SDO (Pin 6)</text>
+        <text x="1100" y="148" fill="#8b949e" font-size="11">Data In (800 Hz ODR, 6 bytes)</text>
+        <text x="1720" y="148" fill="#8b949e" font-size="11">Green DuPont 26AWG, < 150mm</text>
+        <text x="2380" y="148" fill="#3fb950" font-size="11" font-weight="700">Verified (Direct DMA readback)</text>
+        
+        <rect x="20" y="156" width="2760" height="21" fill="#161b22"/>
+        <text x="35" y="170" fill="#58a6ff" font-size="11" font-weight="700">ADXL345 SPI Bus</text>
+        <text x="210" y="170" fill="#ffffff" font-size="11" font-weight="600">SPI Master Out (SDA)</text>
+        <text x="480" y="170" fill="#d29922" font-size="11" font-weight="700">GPIO 23 (Header J3-2)</text>
+        <text x="780" y="170" fill="#3fb950" font-size="11">ADXL345 SDA (Pin 7)</text>
+        <text x="1100" y="170" fill="#8b949e" font-size="11">Data Out (Command / Config)</text>
+        <text x="1720" y="170" fill="#8b949e" font-size="11">Blue DuPont 26AWG, < 150mm</text>
+        <text x="2380" y="170" fill="#3fb950" font-size="11" font-weight="700">Verified (Fast register writes)</text>
+        
+        <rect x="20" y="178" width="2760" height="21" fill="#131720"/>
+        <text x="35" y="192" fill="#58a6ff" font-size="11" font-weight="700">ADXL345 Interrupt</text>
+        <text x="210" y="192" fill="#ffffff" font-size="11" font-weight="600">Data Ready (INT1)</text>
+        <text x="480" y="192" fill="#d29922" font-size="11" font-weight="700">GPIO 4 (Header J3-13)</text>
+        <text x="780" y="192" fill="#3fb950" font-size="11">ADXL345 INT1 (Pin 4)</text>
+        <text x="1100" y="192" fill="#8b949e" font-size="11">Digital Input (FIFO Watermark)</text>
+        <text x="1720" y="192" fill="#8b949e" font-size="11">Orange DuPont 26AWG, < 150mm</text>
+        <text x="2380" y="192" fill="#3fb950" font-size="11" font-weight="700">Verified (Dual-use: TACH in Wokwi)</text>
+        
+        <rect x="20" y="200" width="2760" height="21" fill="#161b22"/>
+        <text x="35" y="214" fill="#58a6ff" font-size="11" font-weight="700">Visual Status LED</text>
+        <text x="210" y="214" fill="#ffffff" font-size="11" font-weight="600">Status Green (Normal)</text>
+        <text x="480" y="214" fill="#d29922" font-size="11" font-weight="700">GPIO 25 (Header J1-9)</text>
+        <text x="780" y="214" fill="#3fb950" font-size="11">RGB Pin 3 (Green Anode)</text>
+        <text x="1100" y="214" fill="#8b949e" font-size="11">Digital Out via 330Ω ballast</text>
+        <text x="1720" y="214" fill="#8b949e" font-size="11">Green Wire, < 2.0 mA drive</text>
+        <text x="2380" y="214" fill="#3fb950" font-size="11" font-weight="700">Verified (Normal state: RMS < 0.45g)</text>
+        
+        <rect x="20" y="222" width="2760" height="21" fill="#131720"/>
+        <text x="35" y="236" fill="#58a6ff" font-size="11" font-weight="700">Visual Status LED</text>
+        <text x="210" y="236" fill="#ffffff" font-size="11" font-weight="600">Status Blue (Calib)</text>
+        <text x="480" y="236" fill="#d29922" font-size="11" font-weight="700">GPIO 26 (Header J1-10)</text>
+        <text x="780" y="236" fill="#3fb950" font-size="11">RGB Pin 4 (Blue Anode)</text>
+        <text x="1100" y="236" fill="#8b949e" font-size="11">Digital Out via 330Ω ballast</text>
+        <text x="1720" y="236" fill="#8b949e" font-size="11">Blue Wire, < 2.0 mA drive</text>
+        <text x="2380" y="236" fill="#3fb950" font-size="11" font-weight="700">Verified (Calibrating / Warm-up)</text>
+        
+        <rect x="20" y="244" width="2760" height="21" fill="#161b22"/>
+        <text x="35" y="258" fill="#58a6ff" font-size="11" font-weight="700">Visual Status LED</text>
+        <text x="210" y="258" fill="#ffffff" font-size="11" font-weight="600">Status Red (Alarm)</text>
+        <text x="480" y="258" fill="#d29922" font-size="11" font-weight="700">GPIO 27 (Header J1-11)</text>
+        <text x="780" y="258" fill="#3fb950" font-size="11">RGB Pin 1 (Red Anode)</text>
+        <text x="1100" y="258" fill="#8b949e" font-size="11">Digital Out via 330Ω ballast</text>
+        <text x="1720" y="258" fill="#8b949e" font-size="11">Red Wire, ~ 5.9 mA drive</text>
+        <text x="2380" y="258" fill="#3fb950" font-size="11" font-weight="700">Verified (Abnormal: RMS > 0.45g)</text>
+        
+        <rect x="20" y="266" width="2760" height="21" fill="#131720"/>
+        <text x="35" y="280" fill="#58a6ff" font-size="11" font-weight="700">Motor Drive Rig</text>
+        <text x="210" y="280" fill="#ffffff" font-size="11" font-weight="600">12V Excitation Loop</text>
+        <text x="480" y="280" fill="#d29922" font-size="11" font-weight="700">ISOLATED DOMAIN</text>
+        <text x="780" y="280" fill="#3fb950" font-size="11">N20 Motor + 1N4007 Diode</text>
+        <text x="1100" y="280" fill="#8b949e" font-size="11">12V DC, 1A Fused, Flyback Protected</text>
+        <text x="1720" y="280" fill="#8b949e" font-size="11">Heavy 20-22AWG stranded wire</text>
+        <text x="2380" y="280" fill="#3fb950" font-size="11" font-weight="700">Strictly Isolated (NO COMMON GROUND)</text>
+        
+  </g>
+</svg>

@@ -1,0 +1,4 @@
+{
+  "summary":  "Implementation of DC bias removal, 3-axis vector RMS, Hann windowing, and in-place Radix-2 FFT peak analysis",
+  "updatedAt":  "2026-09-01T17:35:41.658570472Z"
+}

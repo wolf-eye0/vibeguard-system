@@ -1,0 +1,914 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2800 1750" width="2800" height="1750" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="bbBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdfcf7"/>
+      <stop offset="100%" stop-color="#eae6d9"/>
+    </linearGradient>
+    <linearGradient id="stripRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f85149"/>
+      <stop offset="100%" stop-color="#da3633"/>
+    </linearGradient>
+    <linearGradient id="stripBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#388bfd"/>
+      <stop offset="100%" stop-color="#1f6feb"/>
+    </linearGradient>
+
+    <filter id="bbShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+    <filter id="partGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Title Header -->
+  <rect x="40" y="30" width="2720" height="100" fill="#161b22" stroke="#30363d" stroke-width="2" rx="8" filter="url(#partGlow)"/>
+  <rect x="42" y="32" width="12" height="96" fill="#2ea043" rx="4"/>
+  <text x="75" y="70" fill="#ffffff" font-size="28" font-weight="800">VIBEGUARD: PHYSICAL BREADBOARD &amp; DESK WIRING GUIDE</text>
+  <text x="75" y="105" fill="#8b949e" font-size="16" font-weight="500">EXACT MATHEMATICALLY VERIFIED PIN CONNECTION &amp; COMPONENT LAYOUT — MB102 SOLDERLESS BREADBOARD</text>
+
+  <!-- Legend Badges -->
+  <g transform="translate(1920, 45)">
+    <rect x="0" y="0" width="820" height="70" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="6"/>
+    <text x="20" y="26" fill="#58a6ff" font-size="12" font-weight="700">WIRING METHOD: <tspan fill="#ffffff">Female-to-Male (F2M) Jumpers off-board (Full breadboard area available)</tspan></text>
+    <text x="20" y="46" fill="#3fb950" font-size="12" font-weight="700">POWER RAILS: <tspan fill="#ffffff">Red = +3.3V Regulated (AMS1117), Blue = GND (0V)</tspan></text>
+    <text x="20" y="64" fill="#f85149" font-size="11" font-weight="800">MANDATORY RULE: <tspan fill="#ff7b72">Motor 12V supply is 100% ISOLATED. Never connect 12V GND to Breadboard GND!</tspan></text>
+  </g>
+
+  <!-- ==================== 1. PHYSICAL 7SEMI ESP32 (ON DESK) ==================== -->
+  <g transform="translate(70, 160)">
+    <!-- Desk Area Outline -->
+    <rect x="0" y="0" width="460" height="880" fill="#161b22" stroke="#388bfd" stroke-width="2" rx="12" filter="url(#bbShadow)"/>
+    <rect x="20" y="15" width="420" height="35" fill="#1f6feb" rx="4"/>
+    <text x="230" y="38" fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle">7Semi ESP32-DEVKIT-E (ON DESK)</text>
+
+    <!-- ESP32 Board Graphic -->
+    <rect x="40" y="70" width="380" height="740" fill="#12161f" stroke="#58a6ff" stroke-width="2" rx="14"/>
+
+    <!-- Antenna -->
+    <rect x="140" y="80" width="180" height="25" fill="#1b4725" stroke="#2ea043" stroke-width="1.5" rx="3"/>
+    <text x="230" y="97" fill="#ffffff" font-size="11" font-weight="800" text-anchor="middle">PCB ANTENNA</text>
+
+    <!-- Shield Can -->
+    <rect x="120" y="125" width="220" height="180" fill="#21262d" stroke="#6e7681" stroke-width="2" rx="6"/>
+    <text x="230" y="210" fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle">ESP-WROOM-32E</text>
+    <text x="230" y="235" fill="#8b949e" font-size="12" text-anchor="middle">Dual-Core 240 MHz</text>
+
+    <!-- CP2102 & LDO -->
+    <rect x="130" y="520" width="90" height="65" fill="#161b22" stroke="#30363d" rx="4"/>
+    <text x="175" y="555" fill="#c9d1d9" font-size="12" font-weight="700" text-anchor="middle">CP2102</text>
+    <text x="175" y="572" fill="#8b949e" font-size="9" text-anchor="middle">USB Bridge</text>
+
+    <rect x="240" y="520" width="90" height="65" fill="#161b22" stroke="#30363d" rx="4"/>
+    <text x="285" y="555" fill="#c9d1d9" font-size="12" font-weight="700" text-anchor="middle">AMS1117</text>
+    <text x="285" y="572" fill="#8b949e" font-size="9" text-anchor="middle">3.3V LDO</text>
+
+    <!-- USB-C Port -->
+    <rect x="170" y="730" width="120" height="48" fill="#30363d" stroke="#ffffff" stroke-width="1.5" rx="6"/>
+    <text x="230" y="760" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">USB-C PORT</text>
+    <text x="230" y="805" fill="#58a6ff" font-size="12" font-weight="700" text-anchor="middle">To Host PC (USB Cable)</text>
+
+    <!-- Left Header Pins (J1) -->
+
+        <circle cx="55" cy="130" r="6" fill="#f85149" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="134" fill="#ffffff" font-size="11" font-weight="bold">3V3</text>
+        
+        <circle cx="55" cy="160" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="164" fill="#8b949e" font-size="11" font-weight="normal">EN</text>
+        
+        <circle cx="55" cy="190" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="194" fill="#8b949e" font-size="11" font-weight="normal">VP</text>
+        
+        <circle cx="55" cy="220" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="224" fill="#8b949e" font-size="11" font-weight="normal">VN</text>
+        
+        <circle cx="55" cy="250" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="254" fill="#8b949e" font-size="11" font-weight="normal">D34</text>
+        
+        <circle cx="55" cy="280" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="284" fill="#8b949e" font-size="11" font-weight="normal">D35</text>
+        
+        <circle cx="55" cy="310" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="314" fill="#8b949e" font-size="11" font-weight="normal">D32</text>
+        
+        <circle cx="55" cy="340" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="344" fill="#8b949e" font-size="11" font-weight="normal">D33</text>
+        
+        <circle cx="55" cy="370" r="6" fill="#3fb950" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="374" fill="#ffffff" font-size="11" font-weight="bold">D25</text>
+        
+        <circle cx="55" cy="400" r="6" fill="#58a6ff" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="404" fill="#ffffff" font-size="11" font-weight="bold">D26</text>
+        
+        <circle cx="55" cy="430" r="6" fill="#f85149" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="434" fill="#ffffff" font-size="11" font-weight="bold">D27</text>
+        
+        <circle cx="55" cy="460" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="464" fill="#8b949e" font-size="11" font-weight="normal">D14</text>
+        
+        <circle cx="55" cy="490" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="494" fill="#8b949e" font-size="11" font-weight="normal">D12</text>
+        
+        <circle cx="55" cy="520" r="6" fill="#000000" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="524" fill="#ffffff" font-size="11" font-weight="bold">GND</text>
+        
+        <circle cx="55" cy="550" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="554" fill="#8b949e" font-size="11" font-weight="normal">D13</text>
+        
+        <circle cx="55" cy="580" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="584" fill="#8b949e" font-size="11" font-weight="normal">D9</text>
+        
+        <circle cx="55" cy="610" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="614" fill="#8b949e" font-size="11" font-weight="normal">D10</text>
+        
+        <circle cx="55" cy="640" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="644" fill="#8b949e" font-size="11" font-weight="normal">D11</text>
+        
+        <circle cx="55" cy="670" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="70" y="674" fill="#8b949e" font-size="11" font-weight="normal">5V</text>
+        
+        <circle cx="405" cy="130" r="6" fill="#000000" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="134" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="end">GND</text>
+        
+        <circle cx="405" cy="160" r="6" fill="#388bfd" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="164" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="end">D23</text>
+        
+        <circle cx="405" cy="190" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="194" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D22</text>
+        
+        <circle cx="405" cy="220" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="224" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">TX0</text>
+        
+        <circle cx="405" cy="250" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="254" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">RX0</text>
+        
+        <circle cx="405" cy="280" r="6" fill="#d29922" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="284" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="end">D21</text>
+        
+        <circle cx="405" cy="310" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="314" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">NC</text>
+        
+        <circle cx="405" cy="340" r="6" fill="#3fb950" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="344" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="end">D19</text>
+        
+        <circle cx="405" cy="370" r="6" fill="#bc8cff" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="374" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="end">D18</text>
+        
+        <circle cx="405" cy="400" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="404" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D5</text>
+        
+        <circle cx="405" cy="430" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="434" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D17</text>
+        
+        <circle cx="405" cy="460" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="464" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D16</text>
+        
+        <circle cx="405" cy="490" r="6" fill="#f0883e" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="494" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="end">D4</text>
+        
+        <circle cx="405" cy="520" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="524" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D0</text>
+        
+        <circle cx="405" cy="550" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="554" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D2</text>
+        
+        <circle cx="405" cy="580" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="584" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D15</text>
+        
+        <circle cx="405" cy="610" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="614" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D8</text>
+        
+        <circle cx="405" cy="640" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="644" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D7</text>
+        
+        <circle cx="405" cy="670" r="6" fill="#21262d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="390" y="674" fill="#8b949e" font-size="11" font-weight="normal" text-anchor="end">D6</text>
+        
+  </g> <!-- End ESP32 On Desk -->
+
+  <!-- ==================== 2. MB102 SOLDERLESS BREADBOARD ==================== -->
+  <g transform="translate(580, 160)">
+    <!-- Outer White Plastic Shell -->
+    <rect x="0" y="0" width="1280" height="880" fill="url(#bbBodyGrad)" stroke="#c0b9a8" stroke-width="4" rx="16" filter="url(#bbShadow)"/>
+    <text x="640" y="40" fill="#585145" font-size="16" font-weight="900" letter-spacing="4" text-anchor="middle">MB-102  SOLDERLESS BREADBOARD  (830 TIE POINTS)</text>
+
+    <!-- Center Divider Trough -->
+    <rect x="50" y="450" width="1180" height="24" fill="#dcd6c5" stroke="#b8b09d" stroke-width="1.5" rx="3"/>
+    <text x="640" y="467" fill="#8c8472" font-size="11" font-weight="800" letter-spacing="3" text-anchor="middle">CENTER TROUGH (0.3" DIVIDER)</text>
+
+    <!-- Top Power Rails -->
+    <g transform="translate(60, 60)">
+      <!-- Red (+) Line -->
+      <line x1="20" y1="15" x2="1140" y2="15" stroke="#da3633" stroke-width="3.5"/>
+      <text x="5" y="20" fill="#da3633" font-size="20" font-weight="900">+</text>
+      <text x="1150" y="20" fill="#da3633" font-size="20" font-weight="900">+</text>
+
+      <!-- Blue (-) Line -->
+      <line x1="20" y1="45" x2="1140" y2="45" stroke="#0969da" stroke-width="3.5"/>
+      <text x="5" y="50" fill="#0969da" font-size="24" font-weight="900">-</text>
+      <text x="1150" y="50" fill="#0969da" font-size="24" font-weight="900">-</text>
+
+      <!-- Rail Tie Holes (30 pairs) -->
+
+        <rect x="30" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="30" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="68" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="68" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="106" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="106" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="144" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="144" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="182" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="182" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="220" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="220" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="258" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="258" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="296" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="296" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="334" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="334" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="372" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="372" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="410" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="410" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="448" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="448" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="486" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="486" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="524" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="524" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="562" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="562" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="600" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="600" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="638" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="638" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="676" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="676" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="714" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="714" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="752" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="752" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="790" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="790" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="828" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="828" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="866" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="866" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="904" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="904" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="942" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="942" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="980" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="980" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1018" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1018" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1056" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1056" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1094" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1094" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1132" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1132" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+    </g>
+
+    <!-- Bottom Power Rails -->
+    <g transform="translate(60, 790)">
+      <line x1="20" y1="15" x2="1140" y2="15" stroke="#0969da" stroke-width="3.5"/>
+      <text x="5" y="20" fill="#0969da" font-size="24" font-weight="900">-</text>
+      <text x="1150" y="20" fill="#0969da" font-size="24" font-weight="900">-</text>
+
+      <line x1="20" y1="45" x2="1140" y2="45" stroke="#da3633" stroke-width="3.5"/>
+      <text x="5" y="50" fill="#da3633" font-size="20" font-weight="900">+</text>
+      <text x="1150" y="50" fill="#da3633" font-size="20" font-weight="900">+</text>
+    
+        <rect x="30" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="30" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="68" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="68" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="106" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="106" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="144" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="144" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="182" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="182" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="220" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="220" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="258" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="258" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="296" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="296" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="334" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="334" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="372" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="372" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="410" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="410" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="448" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="448" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="486" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="486" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="524" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="524" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="562" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="562" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="600" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="600" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="638" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="638" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="676" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="676" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="714" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="714" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="752" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="752" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="790" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="790" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="828" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="828" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="866" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="866" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="904" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="904" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="942" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="942" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="980" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="980" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1018" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1018" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1056" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1056" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1094" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1094" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+        <rect x="1132" y="9" width="10" height="12" fill="#21262d" rx="2"/>
+        <rect x="1132" y="39" width="10" height="12" fill="#21262d" rx="2"/>
+        
+    </g>
+
+    <!-- Row Numbers & Terminal Hole Grid -->
+    <!-- Column letters on left: A, B, C, D, E -->
+    <g transform="translate(35, 145)">
+      <text x="0" y="32" fill="#585145" font-size="14" font-weight="900">A</text>
+      <text x="0" y="77" fill="#585145" font-size="14" font-weight="900">B</text>
+      <text x="0" y="122" fill="#585145" font-size="14" font-weight="900">C</text>
+      <text x="0" y="167" fill="#585145" font-size="14" font-weight="900">D</text>
+      <text x="0" y="212" fill="#585145" font-size="14" font-weight="900">E</text>
+
+      <!-- Bottom Bank Letters: F, G, H, I, J -->
+      <text x="0" y="377" fill="#585145" font-size="14" font-weight="900">F</text>
+      <text x="0" y="422" fill="#585145" font-size="14" font-weight="900">G</text>
+      <text x="0" y="467" fill="#585145" font-size="14" font-weight="900">H</text>
+      <text x="0" y="512" fill="#585145" font-size="14" font-weight="900">I</text>
+      <text x="0" y="557" fill="#585145" font-size="14" font-weight="900">J</text>
+    </g>
+    
+            <text x="103.5" y="140" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">1</text>
+            <text x="103.5" y="490" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">1</text>
+            <text x="103.5" y="775" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">1</text>
+            <rect x="98" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="98" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="136" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="174" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="212" y="690" width="11" height="13" fill="#21262d" rx="2"/>
+            <text x="255.5" y="140" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">5</text>
+            <text x="255.5" y="490" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">5</text>
+            <text x="255.5" y="775" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">5</text>
+            <rect x="250" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="250" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="288" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="326" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="364" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="402" y="690" width="11" height="13" fill="#21262d" rx="2"/>
+            <text x="445.5" y="140" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">10</text>
+            <text x="445.5" y="490" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">10</text>
+            <text x="445.5" y="775" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">10</text>
+            <rect x="440" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="440" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="478" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="516" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="554" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="592" y="690" width="11" height="13" fill="#21262d" rx="2"/>
+            <text x="635.5" y="140" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">15</text>
+            <text x="635.5" y="490" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">15</text>
+            <text x="635.5" y="775" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">15</text>
+            <rect x="630" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="630" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="668" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="706" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="744" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="782" y="690" width="11" height="13" fill="#21262d" rx="2"/>
+            <text x="825.5" y="140" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">20</text>
+            <text x="825.5" y="490" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">20</text>
+            <text x="825.5" y="775" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">20</text>
+            <rect x="820" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="820" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="858" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="896" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="934" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="972" y="690" width="11" height="13" fill="#21262d" rx="2"/>
+            <text x="1015.5" y="140" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">25</text>
+            <text x="1015.5" y="490" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">25</text>
+            <text x="1015.5" y="775" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">25</text>
+            <rect x="1010" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="1010" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="1048" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="1086" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="1124" y="690" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="1162" y="690" width="11" height="13" fill="#21262d" rx="2"/>
+            <text x="1205.5" y="140" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">30</text>
+            <text x="1205.5" y="490" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">30</text>
+            <text x="1205.5" y="775" fill="#585145" font-size="12" font-weight="800" text-anchor="middle">30</text>
+            <rect x="1200" y="165" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="210" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="255" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="300" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="345" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="510" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="555" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="600" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="645" width="11" height="13" fill="#21262d" rx="2"/><rect x="1200" y="690" width="11" height="13" fill="#21262d" rx="2"/>
+    <!-- 100uF Bulk Capacitor on Top Power Rails -->
+    <g transform="translate(217.5, 90)">
+      <!-- Cylinder -->
+      <circle cx="0" cy="0" r="28" fill="#1f242c" stroke="#58a6ff" stroke-width="2.5" filter="url(#partGlow)"/>
+      <rect x="5" y="-28" width="18" height="56" fill="#484f58" rx="2"/>
+      <text x="14" y="5" fill="#ffffff" font-size="14" font-weight="900" text-anchor="middle">-</text>
+      <text x="-12" y="5" fill="#f85149" font-size="16" font-weight="900" text-anchor="middle">+</text>
+
+      <!-- Label -->
+      <rect x="-60" y="35" width="120" height="32" fill="#161b22" stroke="#d29922" rx="4"/>
+      <text x="0" y="50" fill="#d29922" font-size="11" font-weight="800" text-anchor="middle">100 µF / 25V</text>
+      <text x="0" y="62" fill="#8b949e" font-size="9" text-anchor="middle">Bulk Decoupling</text>
+
+      <!-- Leads directly into Top Power Rail Tie Points -->
+      <!-- Positive Lead to Red Rail (+) (y = 75 in BB local) -->
+      <line x1="-12" y1="-28" x2="-12" y2="-15" stroke="#da3633" stroke-width="3"/>
+      <circle cx="-12" cy="-15" r="4.5" fill="#da3633"/>
+
+      <!-- Negative Lead to Blue Rail (-) (y = 105 in BB local) -->
+      <line x1="14" y1="28" x2="14" y2="15" stroke="#0969da" stroke-width="3"/>
+      <circle cx="14" cy="15" r="4.5" fill="#0969da"/>
+    </g>
+
+    <!-- 100nF Ceramic Bypass Capacitor at Column 7 -->
+    <g transform="translate(331.5, 90)">
+      <circle cx="0" cy="0" r="16" fill="#b06b00" stroke="#f0883e" stroke-width="2" filter="url(#partGlow)"/>
+      <text x="0" y="4" fill="#ffffff" font-size="9" font-weight="900" text-anchor="middle">104</text>
+      <text x="0" y="32" fill="#d29922" font-size="10" font-weight="700" text-anchor="middle">100 nF</text>
+      <line x1="-6" y1="-16" x2="-6" y2="-15" stroke="#da3633" stroke-width="2.5"/>
+      <circle cx="-6" cy="-15" r="3.5" fill="#da3633"/>
+      <line x1="6" y1="16" x2="6" y2="15" stroke="#0969da" stroke-width="2.5"/>
+      <circle cx="6" cy="15" r="3.5" fill="#0969da"/>
+    </g>
+
+    <!-- 2. 4-Pin Common Cathode RGB LED at Columns 12 to 15, Row E (351.5px) -->
+    <!-- 5mm RGB LED Body Dome -->
+    <g transform="translate(578.5, 290)">
+      <circle cx="0" cy="0" r="30" fill="#ffffff" fill-opacity="0.88" stroke="#8b949e" stroke-width="2.5" filter="url(#partGlow)"/>
+      <circle cx="-9" cy="-5" r="5" fill="#f85149"/>
+      <circle cx="0" cy="8" r="5" fill="#3fb950"/>
+      <circle cx="9" cy="-5" r="5" fill="#58a6ff"/>
+      <text x="0" y="-35" fill="#21262d" font-size="12" font-weight="800" text-anchor="middle">5mm RGB LED</text>
+      <text x="0" y="-22" fill="#8b949e" font-size="9.5" text-anchor="middle">Common Cathode</text>
+    </g>
+
+    <!-- 4 Leads dropping mathematically straight into Row E holes (351.5px) -->
+    <!-- Pin 1: Red (Col 12, Row E) -->
+    <line x1="563.5" y1="315" x2="521.5" y2="351.5" stroke="#f85149" stroke-width="3"/>
+    <circle cx="521.5" cy="351.5" r="4.5" fill="#f85149"/>
+    <text x="521.5" y="369.5" fill="#da3633" font-size="10" font-weight="800" text-anchor="middle">Col 12 (Red)</text>
+
+    <!-- Pin 2: Cathode GND (Col 13, Row E) -->
+    <line x1="573.5" y1="318" x2="559.5" y2="351.5" stroke="#0969da" stroke-width="3.5"/>
+    <circle cx="559.5" cy="351.5" r="5" fill="#0969da"/>
+    <text x="559.5" y="369.5" fill="#0969da" font-size="10" font-weight="900" text-anchor="middle">Col 13 (GND)</text>
+
+    <!-- Pin 3: Green (Col 14, Row E) -->
+    <line x1="583.5" y1="318" x2="597.5" y2="351.5" stroke="#2ea043" stroke-width="3"/>
+    <circle cx="597.5" cy="351.5" r="4.5" fill="#2ea043"/>
+    <text x="597.5" y="369.5" fill="#2ea043" font-size="10" font-weight="800" text-anchor="middle">Col 14 (Grn)</text>
+
+    <!-- Pin 4: Blue (Col 15, Row E) -->
+    <line x1="593.5" y1="315" x2="635.5" y2="351.5" stroke="#1f6feb" stroke-width="3"/>
+    <circle cx="635.5" cy="351.5" r="4.5" fill="#1f6feb"/>
+    <text x="635.5" y="369.5" fill="#1f6feb" font-size="10" font-weight="800" text-anchor="middle">Col 15 (Blu)</text>
+
+    <!-- Cathode Ground Jumper: Col 13 Row D (306.5px) to Blue Rail (-) (105px) -->
+    <path d="M 559.5 306.5 L 559.5 105" fill="none" stroke="#0969da" stroke-width="3.5"/>
+    <circle cx="559.5" cy="306.5" r="4.5" fill="#0969da"/>
+    <circle cx="559.5" cy="105" r="4.5" fill="#0969da"/>
+    <text x="569.5" y="125" fill="#0969da" font-size="10" font-weight="800">LED GND Jumper</text>
+
+    <!-- 330Ω Resistor for Red at X=521.5: Row C (261.5px) to Row F (516.5px) -->
+    <g>
+      <!-- Top Lead into Row C -->
+      <line x1="521.5" y1="261.5" x2="521.5" y2="430" stroke="#6e7681" stroke-width="2.5"/>
+      <circle cx="521.5" cy="261.5" r="4.5" fill="#da3633"/>
+
+      <!-- Resistor Body (Centered directly over center trough y=450-474) -->
+      <rect x="513.5" y="430" width="16" height="55" fill="#d2b48c" stroke="#8b7355" stroke-width="1.5" rx="3"/>
+      <line x1="513.5" y1="442" x2="529.5" y2="442" stroke="#ff7b72" stroke-width="3"/>
+      <line x1="513.5" y1="452" x2="529.5" y2="452" stroke="#ff7b72" stroke-width="3"/>
+      <line x1="513.5" y1="462" x2="529.5" y2="462" stroke="#8b4513" stroke-width="3"/>
+      <line x1="513.5" y1="472" x2="529.5" y2="472" stroke="#ffd700" stroke-width="3"/>
+
+      <!-- Bottom Lead into Row F -->
+      <line x1="521.5" y1="485" x2="521.5" y2="516.5" stroke="#6e7681" stroke-width="2.5"/>
+      <circle cx="521.5" cy="516.5" r="4.5" fill="#da3633"/>
+
+      <text x="533.5" y="462" fill="#d2b48c" font-size="10" font-weight="800">330Ω</text>
+    </g>
+    
+    <!-- 330Ω Resistor for Green at X=597.5: Row C (261.5px) to Row F (516.5px) -->
+    <g>
+      <!-- Top Lead into Row C -->
+      <line x1="597.5" y1="261.5" x2="597.5" y2="430" stroke="#6e7681" stroke-width="2.5"/>
+      <circle cx="597.5" cy="261.5" r="4.5" fill="#2ea043"/>
+
+      <!-- Resistor Body (Centered directly over center trough y=450-474) -->
+      <rect x="589.5" y="430" width="16" height="55" fill="#d2b48c" stroke="#8b7355" stroke-width="1.5" rx="3"/>
+      <line x1="589.5" y1="442" x2="605.5" y2="442" stroke="#ff7b72" stroke-width="3"/>
+      <line x1="589.5" y1="452" x2="605.5" y2="452" stroke="#ff7b72" stroke-width="3"/>
+      <line x1="589.5" y1="462" x2="605.5" y2="462" stroke="#8b4513" stroke-width="3"/>
+      <line x1="589.5" y1="472" x2="605.5" y2="472" stroke="#ffd700" stroke-width="3"/>
+
+      <!-- Bottom Lead into Row F -->
+      <line x1="597.5" y1="485" x2="597.5" y2="516.5" stroke="#6e7681" stroke-width="2.5"/>
+      <circle cx="597.5" cy="516.5" r="4.5" fill="#2ea043"/>
+
+      <text x="609.5" y="462" fill="#d2b48c" font-size="10" font-weight="800">330Ω</text>
+    </g>
+    
+    <!-- 330Ω Resistor for Blue at X=635.5: Row C (261.5px) to Row F (516.5px) -->
+    <g>
+      <!-- Top Lead into Row C -->
+      <line x1="635.5" y1="261.5" x2="635.5" y2="430" stroke="#6e7681" stroke-width="2.5"/>
+      <circle cx="635.5" cy="261.5" r="4.5" fill="#1f6feb"/>
+
+      <!-- Resistor Body (Centered directly over center trough y=450-474) -->
+      <rect x="627.5" y="430" width="16" height="55" fill="#d2b48c" stroke="#8b7355" stroke-width="1.5" rx="3"/>
+      <line x1="627.5" y1="442" x2="643.5" y2="442" stroke="#ff7b72" stroke-width="3"/>
+      <line x1="627.5" y1="452" x2="643.5" y2="452" stroke="#ff7b72" stroke-width="3"/>
+      <line x1="627.5" y1="462" x2="643.5" y2="462" stroke="#8b4513" stroke-width="3"/>
+      <line x1="627.5" y1="472" x2="643.5" y2="472" stroke="#ffd700" stroke-width="3"/>
+
+      <!-- Bottom Lead into Row F -->
+      <line x1="635.5" y1="485" x2="635.5" y2="516.5" stroke="#6e7681" stroke-width="2.5"/>
+      <circle cx="635.5" cy="516.5" r="4.5" fill="#1f6feb"/>
+
+      <text x="647.5" y="462" fill="#d2b48c" font-size="10" font-weight="800">330Ω</text>
+    </g>
+    
+    <!-- ==================== 3. ADXL345 SENSOR BREAKOUT (COL 20-27) ==================== -->
+    <!-- PCB Body Mounted Above Row F over Center Trough (Holes G, H, I, J fully open) -->
+    <g transform="translate(801.5, 320)">
+      <rect x="0" y="0" width="314.0" height="180" fill="#0f5132" stroke="#198754" stroke-width="3" rx="8" filter="url(#partGlow)"/>
+      <text x="157.0" y="32" fill="#ffffff" font-size="15" font-weight="900" text-anchor="middle">ADXL345 ACCELEROMETER</text>
+      <text x="157.0" y="48" fill="#75b798" font-size="10" text-anchor="middle">GY-291 / Robocraze (#TJFKQXJUQ)</text>
+
+      <!-- IC Chip Graphic -->
+      <rect x="117.0" y="65" width="80" height="70" fill="#161b22" stroke="#30363d" stroke-width="2" rx="4"/>
+      <circle cx="132.0" cy="80" r="3" fill="#ffffff"/>
+      <text x="157.0" y="105" fill="#ffffff" font-size="11" font-weight="800" text-anchor="middle">ADXL345</text>
+      <text x="157.0" y="120" fill="#8b949e" font-size="8.5" text-anchor="middle">3-Axis Digital</text>
+    </g>
+
+    <!-- Pin VCC (Col 20): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="825.5" y1="500" x2="825.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="825.5" cy="516.5" r="4.5" fill="#da3633" stroke="#ffffff" stroke-width="1"/>
+    <rect x="809.5" y="492" width="32" height="18" fill="#21262d" stroke="#da3633" stroke-width="1.5" rx="2"/>
+    <text x="825.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">VCC</text>
+    <text x="825.5" y="534" fill="#da3633" font-size="8" font-weight="700" text-anchor="middle">3.3V</text>
+    
+    <!-- Pin GND (Col 21): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="863.5" y1="500" x2="863.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="863.5" cy="516.5" r="4.5" fill="#0969da" stroke="#ffffff" stroke-width="1"/>
+    <rect x="847.5" y="492" width="32" height="18" fill="#21262d" stroke="#0969da" stroke-width="1.5" rx="2"/>
+    <text x="863.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">GND</text>
+    <text x="863.5" y="534" fill="#0969da" font-size="8" font-weight="700" text-anchor="middle">GND</text>
+    
+    <!-- Pin CS (Col 22): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="901.5" y1="500" x2="901.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="901.5" cy="516.5" r="4.5" fill="#d29922" stroke="#ffffff" stroke-width="1"/>
+    <rect x="885.5" y="492" width="32" height="18" fill="#21262d" stroke="#d29922" stroke-width="1.5" rx="2"/>
+    <text x="901.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">CS</text>
+    <text x="901.5" y="534" fill="#d29922" font-size="8" font-weight="700" text-anchor="middle">GPIO21</text>
+    
+    <!-- Pin INT1 (Col 23): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="939.5" y1="500" x2="939.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="939.5" cy="516.5" r="4.5" fill="#f0883e" stroke="#ffffff" stroke-width="1"/>
+    <rect x="923.5" y="492" width="32" height="18" fill="#21262d" stroke="#f0883e" stroke-width="1.5" rx="2"/>
+    <text x="939.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">INT1</text>
+    <text x="939.5" y="534" fill="#f0883e" font-size="8" font-weight="700" text-anchor="middle">GPIO4</text>
+    
+    <!-- Pin INT2 (Col 24): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="977.5" y1="500" x2="977.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="977.5" cy="516.5" r="4.5" fill="#6e7681" stroke="#ffffff" stroke-width="1"/>
+    <rect x="961.5" y="492" width="32" height="18" fill="#21262d" stroke="#6e7681" stroke-width="1.5" rx="2"/>
+    <text x="977.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">INT2</text>
+    <text x="977.5" y="534" fill="#6e7681" font-size="8" font-weight="700" text-anchor="middle">NC</text>
+    
+    <!-- Pin SDO (Col 25): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="1015.5" y1="500" x2="1015.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="1015.5" cy="516.5" r="4.5" fill="#2ea043" stroke="#ffffff" stroke-width="1"/>
+    <rect x="999.5" y="492" width="32" height="18" fill="#21262d" stroke="#2ea043" stroke-width="1.5" rx="2"/>
+    <text x="1015.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">SDO</text>
+    <text x="1015.5" y="534" fill="#2ea043" font-size="8" font-weight="700" text-anchor="middle">GPIO19</text>
+    
+    <!-- Pin SDA (Col 26): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="1053.5" y1="500" x2="1053.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="1053.5" cy="516.5" r="4.5" fill="#0969da" stroke="#ffffff" stroke-width="1"/>
+    <rect x="1037.5" y="492" width="32" height="18" fill="#21262d" stroke="#0969da" stroke-width="1.5" rx="2"/>
+    <text x="1053.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">SDA</text>
+    <text x="1053.5" y="534" fill="#0969da" font-size="8" font-weight="700" text-anchor="middle">GPIO23</text>
+    
+    <!-- Pin SCL (Col 27): PCB Lead -> Row F Hole (516.5px) -->
+    <line x1="1091.5" y1="500" x2="1091.5" y2="516.5" stroke="#c9d1d9" stroke-width="2.5"/>
+    <circle cx="1091.5" cy="516.5" r="4.5" fill="#8957e5" stroke="#ffffff" stroke-width="1"/>
+    <rect x="1075.5" y="492" width="32" height="18" fill="#21262d" stroke="#8957e5" stroke-width="1.5" rx="2"/>
+    <text x="1091.5" y="504" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">SCL</text>
+    <text x="1091.5" y="534" fill="#8957e5" font-size="8" font-weight="700" text-anchor="middle">GPIO18</text>
+    
+    <!-- ADXL345 VCC Jumper: Col 20 Row G (561.5px) -> Top Red Rail (75px) -->
+    <path d="M 825.5 561.5 L 825.5 585 L 803.5 585 L 803.5 75" fill="none" stroke="#da3633" stroke-width="3"/>
+    <circle cx="825.5" cy="561.5" r="4.5" fill="#da3633"/>
+    <circle cx="803.5" cy="75" r="4.5" fill="#da3633"/>
+
+    <!-- ADXL345 GND Jumper: Col 21 Row G (561.5px) -> Top Blue Rail (105px) -->
+    <path d="M 863.5 561.5 L 863.5 600 L 845.5 600 L 845.5 105" fill="none" stroke="#0969da" stroke-width="3"/>
+    <circle cx="863.5" cy="561.5" r="4.5" fill="#0969da"/>
+    <circle cx="845.5" cy="105" r="4.5" fill="#0969da"/>
+  </g> <!-- End Breadboard -->
+
+  <!-- ==================== DUPONT WIRES FROM ESP32 TO BREADBOARD ==================== -->
+  <!-- Wire 1: 3V3 Power (Red): ESP32 J1-1 to Red Rail (+) -->
+  <path d="M 125 290 C 250 240, 480 230, 675 235" fill="none" stroke="#da3633" stroke-width="4.5"/>
+  <circle cx="125" cy="290" r="6" fill="#da3633" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="675" cy="235" r="5" fill="#da3633"/>
+  <rect x="260" y="225" width="130" height="24" fill="#161b22" stroke="#da3633" rx="4"/>
+  <text x="325" y="241" fill="#da3633" font-size="11" font-weight="800" text-anchor="middle">Wire 1: 3V3 Power</text>
+
+  <!-- Wire 2: Logic GND (Black/Blue): ESP32 J1-14 to Blue Rail (-) -->
+  <path d="M 125 680 C 280 670, 450 350, 675 265" fill="none" stroke="#0969da" stroke-width="4.5"/>
+  <circle cx="125" cy="680" r="6" fill="#0969da" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="675" cy="265" r="5" fill="#0969da"/>
+  <rect x="260" y="470" width="130" height="24" fill="#161b22" stroke="#0969da" rx="4"/>
+  <text x="325" y="486" fill="#58a6ff" font-size="11" font-weight="800" text-anchor="middle">Wire 2: Logic GND</text>
+
+  <!-- Wire 3: LED Green (GPIO25): ESP32 J1-9 to Col 14 Row J -->
+  <path d="M 125 530 C 350 530, 750 856.5, 1177.5 856.5" fill="none" stroke="#2ea043" stroke-width="3.5"/>
+  <circle cx="125" cy="530" r="5.5" fill="#2ea043" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1177.5" cy="856.5" r="4.5" fill="#2ea043"/>
+
+  <!-- Wire 4: LED Blue (GPIO26): ESP32 J1-10 to Col 15 Row J -->
+  <path d="M 125 560 C 360 560, 800 856.5, 1215.5 856.5" fill="none" stroke="#1f6feb" stroke-width="3.5"/>
+  <circle cx="125" cy="560" r="5.5" fill="#1f6feb" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1215.5" cy="856.5" r="4.5" fill="#1f6feb"/>
+
+  <!-- Wire 5: LED Red (GPIO27): ESP32 J1-11 to Col 12 Row J -->
+  <path d="M 125 590 C 340 590, 700 856.5, 1101.5 856.5" fill="none" stroke="#da3633" stroke-width="3.5"/>
+  <circle cx="125" cy="590" r="5.5" fill="#da3633" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1101.5" cy="856.5" r="4.5" fill="#da3633"/>
+
+  <!-- Wire 6: SPI MOSI (GPIO23): ESP32 J3-2 to ADXL345 SDA (Col 26 Row G) -->
+  <path d="M 475 320 C 600 320, 1200 721.5, 1633.5 721.5" fill="none" stroke="#0969da" stroke-width="3.5"/>
+  <circle cx="475" cy="320" r="5.5" fill="#0969da" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1633.5" cy="721.5" r="4.5" fill="#0969da"/>
+
+  <!-- Wire 7: SPI CS (GPIO21): ESP32 J3-6 to ADXL345 CS (Col 22 Row G) -->
+  <path d="M 475 440 C 620 440, 1150 721.5, 1481.5 721.5" fill="none" stroke="#d29922" stroke-width="3.5"/>
+  <circle cx="475" cy="440" r="5.5" fill="#d29922" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1481.5" cy="721.5" r="4.5" fill="#d29922"/>
+
+  <!-- Wire 8: SPI MISO (GPIO19): ESP32 J3-8 to ADXL345 SDO (Col 25 Row G) -->
+  <path d="M 475 500 C 650 500, 1180 721.5, 1595.5 721.5" fill="none" stroke="#2ea043" stroke-width="3.5"/>
+  <circle cx="475" cy="500" r="5.5" fill="#2ea043" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1595.5" cy="721.5" r="4.5" fill="#2ea043"/>
+
+  <!-- Wire 9: SPI SCLK (GPIO18): ESP32 J3-9 to ADXL345 SCL (Col 27 Row G) -->
+  <path d="M 475 530 C 680 530, 1220 721.5, 1671.5 721.5" fill="none" stroke="#8957e5" stroke-width="3.5"/>
+  <circle cx="475" cy="530" r="5.5" fill="#8957e5" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1671.5" cy="721.5" r="4.5" fill="#8957e5"/>
+
+  <!-- Wire 10: INT1 (GPIO4): ESP32 J3-13 to ADXL345 INT1 (Col 23 Row G) -->
+  <path d="M 475 650 C 720 650, 1160 721.5, 1519.5 721.5" fill="none" stroke="#f0883e" stroke-width="3" stroke-dasharray="6,4"/>
+  <circle cx="475" cy="650" r="5.5" fill="#f0883e" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="1519.5" cy="721.5" r="4.5" fill="#f0883e"/>
+
+  <!-- Boundary Line -->
+  <line x1="1890" y1="160" x2="1890" y2="1040" stroke="#f85149" stroke-width="4" stroke-dasharray="14,10"/>
+  <rect x="1800" y="550" width="180" height="85" fill="#da3633" stroke="#ffffff" stroke-width="2" rx="8" filter="url(#partGlow)"/>
+  <text x="1890" y="580" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">STRICT ELECTRICAL</text>
+  <text x="1890" y="600" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">ISOLATION</text>
+  <text x="1890" y="620" fill="#0d1117" font-size="10" font-weight="800" text-anchor="middle">NO WIRES TO BREADBOARD</text>
+
+  <!-- 12V Motor Enclosure Box -->
+  <g transform="translate(1910, 160)">
+    <rect x="0" y="0" width="820" height="880" fill="#161b22" stroke="#f85149" stroke-width="2.5" rx="12" filter="url(#bbShadow)"/>
+    <rect x="20" y="15" width="460" height="35" fill="#da3633" rx="4"/>
+    <text x="250" y="38" fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle">12V MOTOR RIG POWER &amp; SAFETY CIRCUIT</text>
+
+    <!-- Component 1: DC Barrel Jack Female Screw Terminal -->
+    <g transform="translate(50, 75)">
+      <rect x="0" y="0" width="320" height="150" fill="#0d1117" stroke="#d29922" stroke-width="2" rx="8"/>
+      <text x="160" y="28" fill="#d29922" font-size="14" font-weight="800" text-anchor="middle">DC BARREL JACK ADAPTER</text>
+      <text x="160" y="46" fill="#8b949e" font-size="10" text-anchor="middle">5.5 × 2.1 mm Screw Terminal Connector</text>
+
+      <circle cx="80" cy="95" r="22" fill="#21262d" stroke="#8b949e" stroke-width="2"/>
+      <circle cx="80" cy="95" r="7" fill="#d29922"/>
+
+      <rect x="180" y="70" width="45" height="40" fill="#21262d" stroke="#da3633" stroke-width="2" rx="4"/>
+      <text x="202" y="95" fill="#da3633" font-size="16" font-weight="900" text-anchor="middle">+</text>
+      <text x="202" y="125" fill="#da3633" font-size="10" font-weight="700" text-anchor="middle">+12V</text>
+
+      <rect x="245" y="70" width="45" height="40" fill="#21262d" stroke="#0969da" stroke-width="2" rx="4"/>
+      <text x="267" y="95" fill="#0969da" font-size="18" font-weight="900" text-anchor="middle">-</text>
+      <text x="267" y="125" fill="#0969da" font-size="10" font-weight="700" text-anchor="middle">GND</text>
+    </g>
+
+    <!-- Component 2: KCD1 Rocker Switch -->
+    <g transform="translate(430, 75)">
+      <rect x="0" y="0" width="340" height="150" fill="#0d1117" stroke="#6e7681" stroke-width="2" rx="8"/>
+      <text x="170" y="28" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">KCD1 ROCKER SWITCH</text>
+      <text x="170" y="46" fill="#8b949e" font-size="10" text-anchor="middle">Inline SPST Master Power Switch</text>
+
+      <rect x="100" y="65" width="140" height="70" fill="#21262d" stroke="#da3633" stroke-width="2" rx="6"/>
+      <path d="M 125 125 L 170 75 L 215 125 Z" fill="#da3633"/>
+      <text x="170" y="110" fill="#ffffff" font-size="18" font-weight="900" text-anchor="middle">I / O</text>
+    </g>
+
+    <!-- Component 3: 5x20mm Inline Fuse Holder -->
+    <g transform="translate(50, 260)">
+      <rect x="0" y="0" width="720" height="130" fill="#0d1117" stroke="#6e7681" stroke-width="2" rx="8"/>
+      <text x="360" y="28" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">5×20 mm INLINE SCREW FUSE HOLDER (1.0A FUSE)</text>
+      <text x="360" y="46" fill="#8b949e" font-size="10" text-anchor="middle">Robu Order 2 • Fast/Time-Delay Overcurrent Protection</text>
+
+      <!-- Screw Housing Graphic -->
+      <rect x="120" y="65" width="100" height="40" fill="#21262d" stroke="#8b949e" stroke-width="2" rx="4"/>
+      <rect x="500" y="65" width="100" height="40" fill="#21262d" stroke="#8b949e" stroke-width="2" rx="4"/>
+      <rect x="220" y="68" width="280" height="34" fill="#58a6ff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5"/>
+      <text x="360" y="90" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">1.0A 250V CARTRIDGE</text>
+    </g>
+
+    <!-- Component 4: 1N4007 Diode Across Terminals -->
+    <g transform="translate(50, 420)">
+      <rect x="0" y="0" width="720" height="150" fill="#0d1117" stroke="#d29922" stroke-width="2" rx="8"/>
+      <text x="360" y="28" fill="#d29922" font-size="14" font-weight="800" text-anchor="middle">1N4007 FLYBACK SUPPRESSION CLAMP DIODE</text>
+      <text x="360" y="46" fill="#8b949e" font-size="10" text-anchor="middle">Connected Anti-Parallel Directly Across Motor Solder Tags</text>
+
+      <!-- Diode Physical Representation -->
+      <g transform="translate(230, 65)">
+        <rect x="40" y="10" width="180" height="45" fill="#1c212c" stroke="#6e7681" stroke-width="2" rx="5"/>
+        <rect x="180" y="10" width="30" height="45" fill="#c9d1d9" rx="2"/>
+        <text x="195" y="38" fill="#0d1117" font-size="13" font-weight="900" text-anchor="middle">|</text>
+
+        <!-- Leads -->
+        <line x1="0" y1="32" x2="40" y2="32" stroke="#6e7681" stroke-width="3"/>
+        <circle cx="0" cy="32" r="4" fill="#0969da"/>
+        <text x="-5" y="18" fill="#0969da" font-size="11" font-weight="800" text-anchor="middle">Anode (GND)</text>
+
+        <line x1="220" y1="32" x2="260" y2="32" stroke="#6e7681" stroke-width="3"/>
+        <circle cx="260" cy="32" r="4" fill="#da3633"/>
+        <text x="265" y="18" fill="#da3633" font-size="11" font-weight="800" text-anchor="middle">Cathode (+12V)</text>
+        <text x="195" y="70" fill="#8b949e" font-size="9" text-anchor="middle">Silver Band</text>
+      </g>
+    </g>
+
+    <!-- Component 5: N20 Micro Metal Gear Motor -->
+    <g transform="translate(50, 600)">
+      <rect x="0" y="0" width="720" height="240" fill="#0d1117" stroke="#f85149" stroke-width="2" rx="8"/>
+      <text x="360" y="28" fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle">N20 MICRO METAL GEAR DC MOTOR (12V 600 RPM)</text>
+
+      <g transform="translate(180, 55)">
+        <rect x="0" y="30" width="100" height="100" fill="#21262d" stroke="#8b949e" stroke-width="2" rx="4"/>
+        <text x="50" y="85" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">GEARBOX</text>
+
+        <rect x="100" y="38" width="140" height="85" fill="#161b22" stroke="#6e7681" stroke-width="2" rx="5"/>
+        <text x="170" y="85" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">12V DC</text>
+
+        <rect x="-40" y="68" width="40" height="24" fill="#c9d1d9" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="-20" y="58" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">D-Shaft</text>
+
+        <rect x="240" y="55" width="20" height="15" fill="#d29922" stroke="#ffffff"/>
+        <text x="270" y="67" fill="#da3633" font-size="12" font-weight="800">(+) Terminal</text>
+
+        <rect x="240" y="92" width="20" height="15" fill="#d29922" stroke="#ffffff"/>
+        <text x="270" y="104" fill="#0969da" font-size="12" font-weight="800">(-) Terminal</text>
+
+        <!-- Cam Arm FAB-01 -->
+        <g transform="translate(-40, 0)">
+          <path d="M 0 55 L -35 35 A 25 25 0 0 0 -35 125 L 0 105 Z" fill="#238636" stroke="#2ea043" stroke-width="2"/>
+          <circle cx="-35" cy="80" r="15" fill="#d29922" stroke="#ffffff" stroke-width="1.5"/>
+          <text x="-35" y="85" fill="#000000" font-size="9" font-weight="900" text-anchor="middle">M3</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 12V Wires -->
+    <path d="M 252 165 L 290 165 L 290 145 L 430 145" fill="none" stroke="#da3633" stroke-width="3.5"/>
+    <path d="M 680 145 L 710 145 L 710 325 L 670 325" fill="none" stroke="#da3633" stroke-width="3.5"/>
+    <path d="M 170 325 L 140 325 L 140 515 L 490 515" fill="none" stroke="#da3633" stroke-width="3.5"/>
+    <path d="M 490 515 L 490 710" fill="none" stroke="#da3633" stroke-width="3.5"/>
+
+    <path d="M 315 165 L 340 165 L 340 450 L 230 450" fill="none" stroke="#0969da" stroke-width="3.5" stroke-dasharray="6,3"/>
+    <path d="M 230 450 L 230 745 L 490 745" fill="none" stroke="#0969da" stroke-width="3.5" stroke-dasharray="6,3"/>
+  </g>
+
+  <!-- ==================== 4. STEP-BY-STEP CHECKLIST PANEL ==================== -->
+  <g transform="translate(40, 1070)">
+    <rect x="0" y="0" width="{width-80}" height="620" fill="#161b22" stroke="#30363d" stroke-width="2" rx="10" filter="url(#partGlow)"/>
+    <rect x="15" y="15" width="{width-110}" height="35" fill="#21262d" rx="4"/>
+    <text x="35" y="38" fill="#58a6ff" font-size="14" font-weight="800">STEP-BY-STEP PHYSICAL ASSEMBLY &amp; VERIFICATION AUDIT CHECKLIST</text>
+
+    <!-- Column 1: Power & ESP32 -->
+    <g transform="translate(30, 70)">
+      <rect x="0" y="0" width="870" height="520" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+      <text x="25" y="32" fill="#d29922" font-size="14" font-weight="800">PHASE 1: POWER RAILS &amp; BROWNOUT PROTECTION</text>
+
+      <text x="25" y="65" fill="#c9d1d9" font-size="12">1. Connect Red F2M wire from ESP32 <tspan fill="#f85149" font-weight="700">3V3</tspan> pin to Breadboard <tspan fill="#da3633" font-weight="700">Red Rail (+)</tspan>.</text>
+      <text x="25" y="95" fill="#c9d1d9" font-size="12">2. Connect Black F2M wire from ESP32 <tspan fill="#ffffff" font-weight="700">GND</tspan> pin to Breadboard <tspan fill="#0969da" font-weight="700">Blue Rail (-)</tspan>.</text>
+      <text x="25" y="125" fill="#c9d1d9" font-size="12">3. Insert <tspan fill="#d29922" font-weight="700">100 µF</tspan> radial electrolytic capacitor directly across rails at Col 4:</text>
+      <text x="45" y="145" fill="#8b949e" font-size="11">• Longer lead (Positive) into Red Rail (+)</text>
+      <text x="45" y="165" fill="#8b949e" font-size="11">• Shorter lead with white minus stripe (Negative) into Blue Rail (-)</text>
+      <text x="25" y="195" fill="#c9d1d9" font-size="12">4. Insert <tspan fill="#d29922" font-weight="700">100 nF</tspan> (104) ceramic capacitor in parallel across Red (+) and Blue (-) at Col 7.</text>
+      <text x="25" y="225" fill="#c9d1d9" font-size="12">5. Plug USB-C cable into PC; verify ESP32 red power LED turns ON steadily.</text>
+
+      <rect x="25" y="260" width="820" height="230" fill="#161b22" stroke="#d29922" stroke-width="1.5" rx="6"/>
+      <text x="40" y="290" fill="#d29922" font-size="12" font-weight="800">WHY THIS MATTERS (BROWNOUT DEFENSE):</text>
+      <text x="40" y="315" fill="#8b949e" font-size="11">The ESP32 draws ~500mA transient pulses during startup and Wi-Fi bursts.</text>
+      <text x="40" y="335" fill="#8b949e" font-size="11">The AMS1117 LDO loop delay causes a 15µs sag without bulk capacitance.</text>
+      <text x="40" y="355" fill="#8b949e" font-size="11">The 100µF capacitor holds the rail above 3.10V, safely above the 2.70V brownout</text>
+      <text x="40" y="375" fill="#8b949e" font-size="11">detector threshold (rst:0x10), preventing endless reboot cycles.</text>
+    </g>
+
+    <!-- Column 2: RGB LED & ADXL345 -->
+    <g transform="translate(930, 70)">
+      <rect x="0" y="0" width="900" height="520" fill="#0d1117" stroke="#30363d" stroke-width="1.5" rx="8"/>
+      <text x="25" y="32" fill="#3fb950" font-size="14" font-weight="800">PHASE 2: SENSOR &amp; RGB TELEMETRY WIRING</text>
+
+      <text x="25" y="65" fill="#c9d1d9" font-size="12">1. Insert 5mm Common Cathode RGB LED into breadboard <tspan fill="#ffffff" font-weight="700">Row E</tspan>:</text>
+      <text x="45" y="85" fill="#8b949e" font-size="11">• Col 12 (Red) | Col 13 (Cathode - Longest) | Col 14 (Green) | Col 15 (Blue)</text>
+      <text x="25" y="110" fill="#c9d1d9" font-size="12">2. Wire Col 13 (Row D) to <tspan fill="#0969da" font-weight="700">Blue Rail (-)</tspan> with a short jumper wire.</text>
+      <text x="25" y="135" fill="#c9d1d9" font-size="12">3. Insert 3× <tspan fill="#d29922" font-weight="700">330 Ω</tspan> resistors across center trough (<tspan fill="#ffffff" font-weight="700">Row C to Row F</tspan>):</text>
+      <text x="45" y="155" fill="#8b949e" font-size="11">• In Columns 12 (Red), 14 (Green), and 15 (Blue) — straddling trough</text>
+      <text x="25" y="180" fill="#c9d1d9" font-size="12">4. Connect GPIO control lines from ESP32 to <tspan fill="#ffffff" font-weight="700">Row J</tspan> (bottom strip):</text>
+      <text x="45" y="200" fill="#3fb950" font-size="11">• GPIO 25 (Header J1-9) → Col 14 Row J (Green Indicator)</text>
+      <text x="45" y="218" fill="#58a6ff" font-size="11">• GPIO 26 (Header J1-10) → Col 15 Row J (Blue Indicator)</text>
+      <text x="45" y="236" fill="#f85149" font-size="11">• GPIO 27 (Header J1-11) → Col 12 Row J (Red Indicator)</text>
+      <text x="25" y="262" fill="#c9d1d9" font-size="12">5. Seat ADXL345 Breakout 8 header pins into <tspan fill="#ffffff" font-weight="700">Columns 20 to 27, Row F</tspan>:</text>
+      <text x="45" y="282" fill="#8b949e" font-size="11">• PCB body hangs over trough; Holes G, H, I, J directly accessible</text>
+      <text x="25" y="306" fill="#c9d1d9" font-size="12">6. Wire Power Jumpers from <tspan fill="#ffffff" font-weight="700">Row G</tspan> to Top Rails:</text>
+      <text x="45" y="324" fill="#da3633" font-size="11">• Col 20 Row G (VCC) → Red Rail (+) | Col 21 Row G (GND) → Blue Rail (-)</text>
+      <text x="25" y="348" fill="#c9d1d9" font-size="12">7. Connect 4-Wire SPI Bus from ESP32 Right Header (J3) to <tspan fill="#ffffff" font-weight="700">Row G</tspan>:</text>
+      <text x="45" y="366" fill="#d29922" font-size="11">• CS: GPIO 21 (J3-6) → Col 22 Row G</text>
+      <text x="45" y="384" fill="#f0883e" font-size="11">• INT1: GPIO 4 (J3-13) → Col 23 Row G</text>
+      <text x="45" y="402" fill="#2ea043" font-size="11">• MISO (SDO): GPIO 19 (J3-8) → Col 25 Row G</text>
+      <text x="45" y="420" fill="#0969da" font-size="11">• MOSI (SDA): GPIO 23 (J3-2) → Col 26 Row G</text>
+      <text x="45" y="438" fill="#8957e5" font-size="11">• SCLK (SCL): GPIO 18 (J3-9) → Col 27 Row G</text>
+    </g>
+
+    <!-- Column 3: 12V Motor Rig Circuit -->
+    <g transform="translate(1860, 70)">
+      <rect x="0" y="0" width="870" height="520" fill="#0d1117" stroke="#f85149" stroke-width="1.5" rx="8"/>
+      <text x="25" y="32" fill="#f85149" font-size="14" font-weight="800">PHASE 3: ISOLATED 12V MOTOR RIG &amp; SAFETY</text>
+
+      <text x="25" y="65" fill="#c9d1d9" font-size="12">1. 12V 2A DC Adapter plugs into 5.5×2.1mm DC Barrel Jack Screw Terminal.</text>
+      <text x="25" y="95" fill="#c9d1d9" font-size="12">2. Route Positive (+12V) through KCD1 Rocker Switch (inline power cut).</text>
+      <text x="25" y="125" fill="#c9d1d9" font-size="12">3. Route Switch output through 5×20mm Inline Fuse Holder (1.0A fuse).</text>
+      <text x="25" y="155" fill="#c9d1d9" font-size="12">4. Solder <tspan fill="#d29922" font-weight="700">1N4007 Diode</tspan> anti-parallel directly across N20 motor tags:</text>
+      <text x="45" y="175" fill="#f85149" font-size="11">• Cathode (Silver Band) to Motor (+) Terminal</text>
+      <text x="45" y="195" fill="#ffffff" font-size="11">• Anode to Motor (-) Terminal</text>
+      <text x="25" y="225" fill="#c9d1d9" font-size="12">5. Connect DC Jack (-) GND directly to Motor (-) terminal.</text>
+
+      <rect x="25" y="260" width="820" height="230" fill="#211212" stroke="#f85149" stroke-width="1.5" rx="6"/>
+      <text x="40" y="290" fill="#f85149" font-size="12" font-weight="800">CRITICAL SAFETY DIRECTIVE:</text>
+      <text x="40" y="315" fill="#ff7b72" font-size="11">NEVER connect 12V Motor Ground to ESP32 or Breadboard Ground!</text>
+      <text x="40" y="335" fill="#c9d1d9" font-size="11">Motor commutator sparks and back-EMF ripple circulating in logic ground</text>
+      <text x="40" y="355" fill="#c9d1d9" font-size="11">will corrupt SPI readings and risk destroying host computer USB ports.</text>
+      <text x="40" y="375" fill="#3fb950" font-size="11">Mechanical baseplate transmits vibration; zero electrical return is needed.</text>
+    </g>
+  </g>
+
+</svg>

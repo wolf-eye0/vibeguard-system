@@ -1,0 +1,28 @@
+{
+  "name": "adxl345-vibe",
+  "author": "VibeGuard Embedded Systems Team",
+  "pins": [
+    "GND",
+    "VCC",
+    "CS",
+    "INT1",
+    "INT2",
+    "SDO",
+    "SDA",
+    "SCL"
+  ],
+  "controls": [
+    {
+      "id": "faultLevel",
+      "label": "Mechanical Imbalance (0=Normal, 100=Severe)",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1
+    }
+  ],
+  "display": {
+    "width": 160,
+    "height": 100
+  }
+}

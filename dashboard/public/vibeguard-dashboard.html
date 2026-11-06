@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="VibeGuard local ESP32 and ADXL345 machine condition monitor">
+  <title>VibeGuard — Machine Condition Monitor</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/print.css" media="print">
+  <script src="/vendor/chart.js" defer></script>
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#dashboard">Skip to dashboard</a>
+  <header class="topbar">
+    <div class="brand-block">
+      <svg class="brand-mark" viewBox="0 0 40 32" role="img" aria-label="VibeGuard waveform V logo">
+        <path d="M3 8l8 16 6-12 6 12 8-16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="31" cy="8" r="3.5" fill="var(--accent)" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <div><strong>VIBEGUARD</strong><span>Machine Condition Monitor</span></div>
+    </div>
+    <div class="asset-context"><span class="eyebrow">ASSET</span><strong>Motor Rig 01</strong></div>
+    <div class="connection-cluster" aria-label="System connections">
+      <span class="mode-badge" id="modeBadge">PREVIEW</span>
+      <span class="connection-item" id="bridgeStatus"><i class="status-dot"></i>Bridge offline</span>
+      <span class="connection-item" id="sensorStatus"><i class="status-dot"></i>Sensor preview</span>
+      <span class="connection-item mono" id="dataAge">Updated now</span>
+    </div>
+    <div class="header-actions">
+      <button class="icon-button" id="pauseButton" type="button" aria-label="Pause display" title="Pause display">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>
+      </button>
+      <button class="icon-button" id="presentationButton" type="button" aria-label="Toggle presentation mode" title="Presentation mode">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg>
+      </button>
+      <button class="icon-button" data-theme-toggle type="button" aria-label="Switch to light mode" title="Theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      </button>
+      <button class="icon-button" id="menuButton" type="button" aria-label="Open controls" title="Controls">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="systemBanner" class="system-banner" role="status" hidden>
+    <div><strong id="bannerTitle">Preview data is active</strong><span id="bannerMessage">Values on this screen are not from the hardware.</span></div>
+    <button class="text-button" id="bannerAction" type="button" hidden>Retry</button>
+  </div>
+
+  <main id="dashboard" class="dashboard">
+    <div class="page-heading">
+      <div><p class="eyebrow">LOCAL CONDITION MONITORING</p><h1>Machine Condition Monitor</h1></div>
+      <p id="sessionClock" class="session-clock mono">SESSION 00:00:00</p>
+    </div>
+
+    <section class="status-strip panel" aria-labelledby="statusTitle">
+      <h2 id="statusTitle" class="sr-only">Current condition</h2>
+      <article class="metric-cell condition-cell">
+        <span class="metric-label">Condition</span>
+        <div class="state-value"><i class="state-glyph" id="stateGlyph"></i><strong id="stateValue">STARTING</strong></div>
+        <span class="metric-support" id="stateSupport">Initializing dashboard</span>
+      </article>
+      <article class="metric-cell"><span class="metric-label">Vector RMS</span><div><strong id="vectorValue">—</strong><span class="unit">g</span></div><span class="metric-support" id="vectorSupport">Waiting for data</span></article>
+      <article class="metric-cell"><span class="metric-label">Peak</span><div><strong id="peakValue">—</strong><span class="unit">g</span></div><span class="metric-support">Current DSP window</span></article>
+      <article class="metric-cell"><span class="metric-label">Crest factor</span><div><strong id="crestValue">—</strong></div><span class="metric-support">Peak ÷ RMS</span></article>
+      <article class="metric-cell margin-cell"><span class="metric-label">Threshold margin</span><div><strong id="marginValue">—</strong><span class="unit">g</span></div><div class="threshold-track"><i id="marginTrack"></i><b id="warningTick"></b><b id="alarmTick"></b></div><span class="metric-support" id="marginSupport">Until warning</span></article>
+    </section>
+
+    <section class="panel calibration-panel" id="fieldCalPanel" aria-labelledby="fieldCalTitle">
+      <div class="panel-header">
+        <div><p class="eyebrow">RAPID FIELD COMMISSIONING</p><h2 id="fieldCalTitle">Interactive 3-Stage Calibration &amp; Quadrature Tare</h2></div>
+        <div class="cal-status-badge" id="calStatusBadge">IDLE</div>
+      </div>
+      <p class="panel-copy">Calibrate on any classroom table in under 15 seconds. Motor-off tare zeroes the floor; 3-stage recording establishes exact threshold corridors and auto-saves to ESP32 Flash memory.</p>
+
+      <div class="cal-grid">
+        <!-- Card 0: Tare Floor -->
+        <div class="cal-card" id="calCardTare">
+          <div class="cal-card-header">
+            <span class="cal-step-num">0</span>
+            <div><strong>Tare Floor</strong><small>Motor OFF (zero baseline)</small></div>
+          </div>
+          <div class="cal-card-val"><span id="calTareVal">—</span> <span class="unit">g</span></div>
+          <button type="button" class="cal-btn" id="btnTare">Start Tare</button>
+        </div>
+
+        <!-- Card 1: Stage 0 Normal -->
+        <div class="cal-card s0" id="calCardS0">
+          <div class="cal-card-header">
+            <span class="cal-step-num">1</span>
+            <div><strong>Stage 0 (Green)</strong><small>Motor ON, Bare Arm</small></div>
+          </div>
+          <div class="cal-card-val"><span id="calS0Val">—</span> <span class="unit">g</span></div>
+          <button type="button" class="cal-btn" id="btnCalS0">Start Stage 0</button>
+        </div>
+
+        <!-- Card 2: Stage 1 Warning -->
+        <div class="cal-card s1" id="calCardS1">
+          <div class="cal-card-header">
+            <span class="cal-step-num">2</span>
+            <div><strong>Stage 1 (Yellow)</strong><small>Bolt Only (~2.5g)</small></div>
+          </div>
+          <div class="cal-card-val"><span id="calS1Val">—</span> <span class="unit">g</span></div>
+          <button type="button" class="cal-btn" id="btnCalS1">Start Stage 1</button>
+        </div>
+
+        <!-- Card 3: Stage 2 Alarm -->
+        <div class="cal-card s2" id="calCardS2">
+          <div class="cal-card-header">
+            <span class="cal-step-num">3</span>
+            <div><strong>Stage 2 (Red)</strong><small>Bolt + Nut (~3.4g)</small></div>
+          </div>
+          <div class="cal-card-val"><span id="calS2Val">—</span> <span class="unit">g</span></div>
+          <button type="button" class="cal-btn" id="btnCalS2">Start Stage 2</button>
+        </div>
+      </div>
+
+      <!-- Action Footer with Threshold Corridors and Reset -->
+      <div class="cal-footer">
+        <div class="cal-results">
+          <span>Warning: <strong id="calActiveWarn">—</strong> g</span>
+          <span>Alarm: <strong id="calActiveAlarm">—</strong> g</span>
+          <span>Tare: <strong id="calActiveTare">0.00000</strong> g</span>
+        </div>
+        <div class="cal-actions">
+          <button type="button" class="secondary-button" id="btnCalReset">Revert Factory Defaults</button>
+          <button type="button" class="primary-button" id="btnCalCommit" disabled>Save Thresholds to Flash</button>
+        </div>
+      </div>
+      <div id="calFeedback" class="cal-feedback" role="status"></div>
+    </section>
+
+    <section class="panel trend-panel" aria-labelledby="trendTitle">
+      <div class="panel-header">
+        <div><p class="eyebrow">PRIMARY EVIDENCE</p><h2 id="trendTitle">Overall vibration</h2></div>
+        <div class="current-reading"><strong id="trendCurrent">—</strong><span>g RMS</span></div>
+        <div class="segmented-control" role="group" aria-label="Chart time range">
+          <button type="button" data-range="30000">30 s</button><button type="button" data-range="60000" class="active">1 min</button><button type="button" data-range="300000">5 min</button>
+        </div>
+      </div>
+      <div class="chart-wrap"><canvas id="trendChart" role="img" aria-label="Vector RMS vibration over time with baseline, warning and alarm thresholds"></canvas></div>
+      <p class="sr-only" id="trendSummary" aria-live="polite">Waiting for vibration data.</p>
+      <footer class="chart-footer"><span>MIN <b id="trendMin">—</b></span><span>MEAN <b id="trendMean">—</b></span><span>MAX <b id="trendMax">—</b></span><span class="live-follow"><i></i>LIVE FOLLOW</span></footer>
+    </section>
+
+    <section class="panel twin-panel" aria-labelledby="twinTitle">
+      <div class="panel-header"><div><p class="eyebrow">PHYSICAL CONTEXT</p><h2 id="twinTitle">Monitored assembly</h2></div><button class="text-button" id="hardwareButton" type="button">View hardware</button></div>
+      <div class="twin-stage" id="twinStage" data-state="UNKNOWN">
+        <svg class="rig-illustration" viewBox="0 0 520 340" role="img" aria-label="Isometric illustration of the acrylic motor rig, accelerometer and ESP32 controller">
+          <defs><linearGradient id="plate" x1="0" y1="0" x2="1" y2="1"><stop stop-color="var(--surface-3)"/><stop offset="1" stop-color="var(--surface-1)"/></linearGradient></defs>
+          <path class="base-shadow" d="M65 238L258 142l208 98-194 96z"/>
+          <path class="base-plate" d="M55 218l202-100 218 102-203 103z"/>
+          <g class="motor"><path class="motor-body" d="M176 157l93-45 70 33-94 47z"/><path class="motor-side" d="M245 192l94-47v63l-94 47z"/><path class="motor-end" d="M176 157l69 35v63l-69-35z"/><circle cx="339" cy="177" r="22" class="motor-cap"/><g class="rotor" id="rotor"><path d="M339 177l42-18"/><circle cx="383" cy="158" r="9"/></g></g>
+          <g class="sensor"><path d="M147 230l57-28 44 21-58 29z"/><circle cx="174" cy="224" r="4"/><circle cx="213" cy="224" r="4"/><path d="M195 219v-25M195 219l24-1M195 219l-10 17" class="axis-lines"/><text x="193" y="189">Z</text><text x="223" y="220">X</text><text x="177" y="244">Y</text></g>
+          <g class="controller"><path d="M316 256l83-41 61 29-84 42z"/><path d="M376 286l84-42v30l-84 42z"/><path d="M316 256l60 30v30l-60-30z"/><rect x="361" y="247" width="18" height="10" transform="skewY(-26)"/><circle class="hardware-led" id="hardwareLed" cx="405" cy="257" r="6"/></g>
+          <g class="callout"><path d="M156 219L97 188H48"/><circle cx="156" cy="219" r="5"/><text x="48" y="177">ADXL345</text><text x="48" y="193" class="sub">SENSOR LOCATION</text></g>
+        </svg>
+      </div>
+      <div class="twin-status"><div><span>Machine state</span><strong id="twinState">Unknown</strong></div><div><span>Physical LED</span><strong id="ledState">Unknown</strong></div><div><span>Dominant axis</span><strong id="dominantAxis">—</strong></div></div>
+      <p class="twin-note">Motion visualizes relative vibration only. Motor speed is not measured.</p>
+    </section>
+
+    <section class="panel axis-panel" aria-labelledby="axisTitle">
+      <div class="panel-header"><div><p class="eyebrow">DIRECTIONAL EVIDENCE</p><h2 id="axisTitle">Directional vibration</h2></div><p class="panel-copy">Shared scale · synchronized time</p></div>
+      <div class="axis-layout">
+        <div class="axis-charts"><div><span class="axis-label x">X RMS</span><canvas id="xChart" role="img" aria-label="X axis RMS trend"></canvas></div><div><span class="axis-label y">Y RMS</span><canvas id="yChart" role="img" aria-label="Y axis RMS trend"></canvas></div><div><span class="axis-label z">Z RMS</span><canvas id="zChart" role="img" aria-label="Z axis RMS trend"></canvas></div></div>
+        <div class="axis-bars" aria-label="Current axis values">
+          <div><span>X</span><div class="bar-track"><i id="xBar"></i></div><strong id="xValue">—</strong></div>
+          <div><span>Y</span><div class="bar-track"><i id="yBar"></i></div><strong id="yValue">—</strong></div>
+          <div><span>Z</span><div class="bar-track"><i id="zBar"></i></div><strong id="zValue">—</strong></div>
+          <p id="axisSummary">Waiting for axis data.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel events-panel" aria-labelledby="eventsTitle">
+      <div class="panel-header"><div><p class="eyebrow">TRANSITIONS</p><h2 id="eventsTitle">System events</h2></div><button class="text-button" id="eventsButton" type="button">View all</button></div>
+      <ol id="eventList" class="event-list"><li class="empty-row">Waiting for session events.</li></ol>
+    </section>
+
+    <section class="panel details-panel" aria-labelledby="detailsTitle">
+      <div class="panel-header"><div><p class="eyebrow">ACQUISITION CHAIN</p><h2 id="detailsTitle">Acquisition details</h2></div></div>
+      <dl class="spec-list"><div><dt>Sensor</dt><dd>ADXL345 · 0xE5</dd></div><div><dt>Range</dt><dd>±16 g full resolution</dd></div><div><dt>Sampling</dt><dd>800 Hz · 128 samples</dd></div><div><dt>Window</dt><dd>160 ms nominal</dd></div><div><dt>Interface</dt><dd>4-wire SPI · 1 MHz</dd></div><div><dt>Controller</dt><dd>ESP32 DevKit</dd></div><div><dt>Thresholds</dt><dd id="thresholdDetails">—</dd></div><div><dt>Source</dt><dd id="sourceDetails">PREVIEW_CONFIG</dd></div></dl>
+    </section>
+
+    <section class="panel readings-panel" aria-labelledby="readingsTitle">
+      <div class="panel-header"><div><p class="eyebrow">EXACT RECORDS</p><h2 id="readingsTitle">Recent readings</h2></div><div class="table-actions"><button class="secondary-button" id="clearButton" type="button">Clear view</button><button class="primary-button" id="exportButton" type="button">Export session CSV</button></div></div>
+      <p class="swipe-hint">Swipe horizontally to inspect readings →</p>
+      <div class="table-wrap" tabindex="0" aria-label="Scrollable recent telemetry readings">
+        <table><thead><tr><th scope="col">Time</th><th scope="col">State</th><th scope="col">Vector RMS</th><th scope="col">X RMS</th><th scope="col">Y RMS</th><th scope="col">Z RMS</th><th scope="col">Peak</th><th scope="col">Crest</th><th scope="col">Warning</th><th scope="col">Alarm</th></tr></thead><tbody id="readingsBody"><tr><td colspan="10" class="empty-row">Waiting for telemetry.</td></tr></tbody></table>
+      </div>
+    </section>
+  </main>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="drawer" id="controlDrawer" role="dialog" aria-modal="true" aria-labelledby="controlTitle" hidden>
+    <div class="drawer-header"><div><p class="eyebrow">SAFE ACCESS</p><h2 id="controlTitle">Experiment controls</h2></div><button class="icon-button close-drawer" type="button" aria-label="Close controls"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <p class="drawer-intro">Hardware commands remain unavailable in preview mode and require a live bridge and sensor.</p>
+    <div class="command-list"><button data-command="CALIBRATE"><span><strong>Run calibration</strong><small>Keep the motor off and the sensor still.</small></span><b>Run</b></button><button data-command="DEMO_ALARM"><span><strong>Start demo alarm</strong><small>Requests the firmware alarm demonstration.</small></span><b>Start</b></button><button data-command="CLEAR_ALARM"><span><strong>Clear demo alarm</strong><small>Returns forced alarm state to normal logic.</small></span><b>Clear</b></button><button data-command="LED_TEST"><span><strong>LED self-test</strong><small>Cycles the physical RGB status LED.</small></span><b>Test</b></button></div>
+    <form id="thresholdForm" class="threshold-form"><fieldset><legend>Manual thresholds</legend><label>Warning <span><input id="warningInput" type="number" min="0.001" step="0.001" required> g</span></label><label>Alarm <span><input id="alarmInput" type="number" min="0.002" step="0.001" required> g</span></label><button class="primary-button" type="submit">Apply thresholds</button><p id="commandFeedback" role="status"></p></fieldset></form>
+  </aside>
+
+  <aside class="drawer" id="hardwareDrawer" role="dialog" aria-modal="true" aria-labelledby="hardwareTitle" hidden>
+    <div class="drawer-header"><div><p class="eyebrow">RIG SPECIFICATION</p><h2 id="hardwareTitle">Hardware details</h2></div><button class="icon-button close-drawer" type="button" aria-label="Close hardware details"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="hardware-sheet"><section><h3>Signal path</h3><ol><li>ADXL345 measures three-axis acceleration.</li><li>ESP32 computes per-window RMS, vector RMS, peak and crest factor.</li><li>USB serial carries packets to the local bridge.</li><li>WebSocket forwards normalized telemetry to this browser.</li></ol></section><section><h3>ESP32 pin map</h3><dl class="spec-list"><div><dt>CS</dt><dd>GPIO 21</dd></div><div><dt>SCK</dt><dd>GPIO 18</dd></div><div><dt>MISO</dt><dd>GPIO 19</dd></div><div><dt>MOSI</dt><dd>GPIO 23</dd></div><div><dt>INT1</dt><dd>GPIO 4</dd></div><div><dt>RGB</dt><dd>25 / 26 / 27</dd></div></dl></section><section><h3>Sensor fault check</h3><p>Verify 3.3 V, common ground, SPI wiring, CS on GPIO 21 and ADXL345 device ID 0xE5.</p></section></div>
+  </aside>
+
+  <aside class="drawer" id="eventsDrawer" role="dialog" aria-modal="true" aria-labelledby="allEventsTitle" hidden>
+    <div class="drawer-header"><div><p class="eyebrow">SESSION HISTORY</p><h2 id="allEventsTitle">All system events</h2></div><button class="icon-button close-drawer" type="button" aria-label="Close event history"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <ol id="allEventList" class="event-list full"></ol>
+  </aside>
+
+  <div class="confirm-dialog" id="confirmDialog" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" hidden><div><h2 id="confirmTitle">Clear this dashboard view?</h2><p>This removes chart and event history from the browser. It does not change the ESP32 or motor rig.</p><div><button class="secondary-button" id="cancelClear" type="button">Cancel</button><button class="danger-button" id="confirmClear" type="button">Clear view</button></div></div></div>
+  <div class="sr-only" id="urgentAnnouncements" aria-live="assertive"></div>
+</body>
+</html>

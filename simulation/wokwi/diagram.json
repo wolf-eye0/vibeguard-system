@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "author": "VibeGuard Engineering Team",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "chip-adxl345-vibe",
+      "id": "sensor",
+      "top": 10,
+      "left": 230,
+      "attrs": { "faultLevel": "0" }
+    },
+    {
+      "type": "chip-n20-motor",
+      "id": "motor1",
+      "top": 10,
+      "left": 440,
+      "attrs": {}
+    },
+    {
+      "type": "chip-pwr-supply-12v",
+      "id": "pwr1",
+      "top": 170,
+      "left": 440,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": 280,
+      "left": 20,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_red",
+      "top": 330,
+      "left": 110,
+      "attrs": { "resistance": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_green",
+      "top": 350,
+      "left": 110,
+      "attrs": { "resistance": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_blue",
+      "top": 370,
+      "left": 110,
+      "attrs": { "resistance": "220" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "status_rgb",
+      "top": 380,
+      "left": 130,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 360,
+      "left": 310,
+      "attrs": { "volume": "0.5" }
+    }
+  ],
+  "connections": [
+    [ "esp:3V3", "sensor:VCC", "red", [ "h20", "v-20", "h130" ] ],
+    [ "esp:GND.1", "sensor:GND", "black", [ "h30", "v-10", "h110" ] ],
+    [ "esp:21", "sensor:CS", "yellow", [ "h20", "v10", "h100" ] ],
+    [ "esp:18", "sensor:SCL", "orange", [ "h30", "v20", "h80" ] ],
+    [ "esp:19", "sensor:SDO", "green", [ "h40", "v30", "h60" ] ],
+    [ "esp:23", "sensor:SDA", "blue", [ "h50", "v40", "h40" ] ],
+    [ "esp:4", "motor1:TACH_OUT", "purple", [ "h60", "v-30", "h240" ] ],
+    [ "pwr1:12V_OUT", "motor1:12V_IN", "red", [ "v-30", "h-20" ] ],
+    [ "pwr1:GND", "motor1:GND", "black", [ "v-30", "h20" ] ],
+    [ "esp:25", "r_green:1", "green", [ "h-20", "v240", "h120" ] ],
+    [ "r_green:2", "status_rgb:G", "green", [ "v0" ] ],
+    [ "esp:26", "r_blue:1", "blue", [ "h-30", "v260", "h120" ] ],
+    [ "r_blue:2", "status_rgb:B", "blue", [ "v0" ] ],
+    [ "esp:27", "r_red:1", "red", [ "h-40", "v280", "h120" ] ],
+    [ "r_red:2", "status_rgb:R", "red", [ "v0" ] ],
+    [ "status_rgb:COM", "esp:GND.2", "black", [ "v30", "h-150", "v-200" ] ],
+    [ "esp:14", "bz1:2", "purple", [ "h-10", "v250", "h320" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v20", "h-330", "v-170" ] ]
+  ],
+  "dependencies": {}
+}

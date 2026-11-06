@@ -1,0 +1,22 @@
+{
+  "name": "vibeguard-local-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local ESP32 + ADXL345 condition monitoring dashboard",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "lint": "node scripts/lint.mjs"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.7",
+    "express": "^4.21.2",
+    "serialport": "^12.0.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.17.0"
+  },
+  "engines": { "node": ">=20" }
+}

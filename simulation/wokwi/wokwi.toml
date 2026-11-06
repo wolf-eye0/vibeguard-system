@@ -1,0 +1,16 @@
+[wokwi]
+version = 1
+firmware = "build/VibeGuard_ESP32.ino.bin"
+elf = "build/VibeGuard_ESP32.ino.elf"
+
+[[chip]]
+name = "adxl345-vibe"
+binary = "adxl345-vibe.chip.wasm"
+
+[[chip]]
+name = "n20-motor"
+binary = "n20-motor.chip.wasm"
+
+[[chip]]
+name = "pwr-supply-12v"
+binary = "pwr-supply-12v.chip.wasm"
